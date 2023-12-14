@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Body = () => {
 
-  const [listOfRestaurant, setListOfRestaurant] = useState(resList)
+  const [listOfRestaurant, setListOfRestaurant] = useState(resList);
   return (
     <div className="body">
       <div className="topRatedBtn">
