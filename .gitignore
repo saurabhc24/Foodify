@@ -8,6 +8,8 @@ yarn-debug.log*
 yarn-error.log*
 
 build/Release
+.DS_Store
+parcel-bundle-reports/
 
 # Dependency directories
 node_modules/
