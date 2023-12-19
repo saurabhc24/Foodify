@@ -1,10 +1,15 @@
 import RestroCard from "./RestroCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
 
   const [listOfRestaurant, setListOfRestaurant] = useState(resList);
+
+
+  useEffect(() => {
+
+  }, []);
   return (
     <div className="body">
       <div className="topRatedBtn">
