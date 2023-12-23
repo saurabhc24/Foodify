@@ -108,6 +108,13 @@ body {
 .card .card-description .about-place .location {
   font-size: 13px;
   color: rgba(128, 128, 128, 0.97);
+  line-height: 18px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  
 }
 
 .topRatedResBtn {
