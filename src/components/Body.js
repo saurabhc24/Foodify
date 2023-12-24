@@ -1,12 +1,14 @@
 import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
+import RestroCardShimmer from "./RestroCardShimmer";
+import Skeleton from "react-loading-skeleton";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
 
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   const fetchData = async () => {
     const response = await fetch(
@@ -17,13 +19,31 @@ const Body = () => {
 
     console.log(jsonData);
 
-    setListOfRestaurant(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setListOfRestaurant(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
+
+  if (listOfRestaurant.length === 0) {
+    let RestrocardShimmerArray = [];
+    for (let i = 0; i <= 10; i++) {
+      RestrocardShimmerArray.push(<RestroCardShimmer key={i} />);
+    }
+    return (
+      <>
+        <div className="topRatedBtn">
+          <h2 className="topRatedRes">Top rated restaurants in Bengaluru</h2>
+        </div>
+        <div className="res-container RestroCardShimmerArray">{RestrocardShimmerArray}</div>
+      </>
+    );
+  }
 
   return (
     <div className="body">
       <div className="topRatedBtn">
-        <button
+        {/* <button
           className="topRatedResBtn"
           onClick={() => {
             const filteredList = listOfRestaurant.filter(
@@ -34,7 +54,8 @@ const Body = () => {
           }}
         >
           <span>Top Rated Restaurants in Bangalore</span>
-        </button>
+        </button> */}
+        <h2 className="topRatedRes">Top rated restaurants in Bengaluru</h2>
       </div>
       <div className="res-container">
         {listOfRestaurant.map((restaurants) => (

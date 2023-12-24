@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat" Arial, sans-serif;
 }
 
 .header {
@@ -31,10 +31,12 @@ body {
 }
 
 .res-container {
-  margin : 0px 50px;
+  margin-left: calc(10% + 36px);
+  margin-right: calc(10% + 36px);
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .cards-container {
@@ -94,7 +96,7 @@ body {
 }
 .card .card-description .about-place {
   display: inline-flex;
-  justify-content: space-between;
+  justify-content:space-evenly;
   align-items: center;
 }
 .card .card-description .about-place .place-name {
@@ -116,7 +118,7 @@ body {
   -webkit-line-clamp: 1;
   
 }
-
+/* 
 .topRatedResBtn {
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
@@ -133,4 +135,60 @@ body {
 
 .topRatedResBtn:hover {
   transform: scale(0.95);
+} */
+
+.topRatedRes {
+  margin-left: calc(10% + 36px);
+  margin-right: calc(10% + 36px);
+  font-weight: 800;
+  font-size: 24px;
 }
+
+.RestroCardShimmerArray {
+  margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.shine {
+  background: #f6f7f8;
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-repeat: no-repeat;
+  background-size: 800px 104px; 
+  display: inline-block;
+  position: relative; 
+  
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-fill-mode: forwards; 
+  -webkit-animation-direction: normal;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeholderShimmer;
+  -webkit-animation-timing-function: linear;
+  }
+
+.shimmer-card-media {
+    display: block!important;
+    width: 325px; 
+    height: 100px; 
+    margin-top: 15px;
+    background-color: #eaeaeb;
+  }
+
+  line {
+    height: 10px;
+    margin-top: 10px;
+    width: 200px;
+    background-color: white; 
+  }
+
+  @-webkit-keyframes placeholderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    
+    100% {
+      background-position: 468px 0; 
+    }
+  }
+  
