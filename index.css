@@ -30,6 +30,11 @@ body {
   padding: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .res-container {
   margin-left: calc(10% + 36px);
   margin-right: calc(10% + 36px);
