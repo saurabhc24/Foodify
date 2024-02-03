@@ -1,6 +1,8 @@
-import { LOGO_URL } from "../utils/constants";
+import { useState } from "react";
+import { LOGO_URL, restaurant_fetch_url } from "../utils/constants";
 
 const Header = () => {
+  
   return (
     <div className="header">
       <div className="logo-container">
@@ -8,12 +10,12 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li><a href="#">Search</a></li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Cart</a></li>
-          <li><a href="#">Sign In</a></li>
+          <li>
+            <a href="#">Log In</a>
+          </li>
+          <li>
+            <a href="#">Sign Up</a>
+          </li>
         </ul>
       </div>
     </div>

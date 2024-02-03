@@ -4,73 +4,33 @@ import RestroCardShimmer from "./RestroCardShimmer";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-
-  // navigator.geolocation.getCurrentPosition((pos) => {
-  //   const { latitude, longitude } = pos.coords;
-  //   setLat(latitude);
-  //   setLng(longitude);
-  // })
-
-  
-
+  const [searchText, setSearchText] = useState("");
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   useEffect(() => {
-    function getLocation() {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    function showPosition(position) {
-      const latitude = position.coords.latitude
-      const longitude = position.coords.longitude
-      setLat(latitude);
-      setLng(longitude);
-    }
-    getLocation();
-    console.log("latitude ", lat, "longitude", lng);
     const fetchData = async () => {
       const response = await fetch(
         `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.940108244989704&lng=77.73359346961144`
         // `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location.}&lng=${lng}`
       );
-
       const jsonData = await response.json();
 
       // console.log(jsonData);
 
-      const listOfRestaurantArray =
-        (jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants).length === 0
-          ? jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants
-          : jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants;
+      const listOfRestaurantArray = (jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants).length === 0 ? jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants : jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
+      // console.log(listOfRestaurant)
       setListOfRestaurant(listOfRestaurantArray);
+      setFilteredRestaurant(listOfRestaurantArray);
     };
 
     fetchData();
   }, []);
 
-  // const fetchData = async () => {
-  //   const response = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.940108244989704&lng=77.73359346961144"
-  //   );
-
-  //   const jsonData = await response.json();
-
-  //   // console.log(jsonData);
-
-  //   setListOfRestaurant(
-  //     jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-  //       ?.restaurants
-  //   );
-  // };
-
   // conditional rendering
   if (listOfRestaurant.length === 0) {
     let RestrocardShimmerArray = [];
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i < 12; i++) {
       RestrocardShimmerArray.push(<RestroCardShimmer key={i} />);
     }
     return (
@@ -87,11 +47,48 @@ const Body = () => {
 
   return (
     <div className="body">
+      <div className="searchbar">
+          <div className="searchicon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#828282"
+              width="18"
+              height="18"
+              viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-"
+              role="img"
+              class="sc-rbbb40-0 iwHbVQ"
+            >
+              <title>Search</title>
+              <path d="M19.78 19.12l-3.88-3.9c1.28-1.6 2.080-3.6 2.080-5.8 0-5-3.98-9-8.98-9s-9 4-9 9c0 5 4 9 9 9 2.2 0 4.2-0.8 5.8-2.1l3.88 3.9c0.1 0.1 0.3 0.2 0.5 0.2s0.4-0.1 0.5-0.2c0.4-0.3 0.4-0.8 0.1-1.1zM1.5 9.42c0-4.1 3.4-7.5 7.5-7.5s7.48 3.4 7.48 7.5-3.38 7.5-7.48 7.5c-4.1 0-7.5-3.4-7.5-7.5z"></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Search for restaurants and food"
+            className="searchbarinput"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          ></input>
+          <button
+            className="searchBtn"
+            onClick={() => {
+              const filteredRestaurantList = listOfRestaurant.filter(
+                (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurant(filteredRestaurantList)
+            }}
+          >
+            Search
+          </button>
+        </div>
       <div className="topRatedBtn">
         <h2 className="topRatedRes">Top rated restaurants in Bengaluru</h2>
       </div>
       <div className="res-container">
-        {listOfRestaurant.map((restaurants) => (
+        {filteredRestaurant.map((restaurants) => (
           <RestroCard key={restaurants.info.id} restaurant={restaurants} />
         ))}
       </div>
