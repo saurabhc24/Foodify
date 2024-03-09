@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import RestroCardShimmer from "./RestroCardShimmer";
+import { restaurant_fetch_url } from "../utils/constants";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -10,8 +11,7 @@ const Body = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.940108244989704&lng=77.73359346961144`
-        // `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location.}&lng=${lng}`
+        restaurant_fetch_url
       );
       const jsonData = await response.json();
 
@@ -30,7 +30,7 @@ const Body = () => {
   // conditional rendering
   if (listOfRestaurant.length === 0) {
     let RestrocardShimmerArray = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 30; i++) {
       RestrocardShimmerArray.push(<RestroCardShimmer key={i} />);
     }
     return (
