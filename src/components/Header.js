@@ -1,23 +1,27 @@
-import { useState } from "react";
-import { LOGO_URL, restaurant_fetch_url } from "../utils/constants";
+import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
+import foodify from "../media/foodify.png";
 
 const Header = () => {
-  
   return (
     <div className="header">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <Link to="/">
+          <img className="logo" src={foodify} />
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
           <li>
-            <a href="./Cart">Cart</a>
+            <b>
+              <Link to="/Login">Login</Link>
+            </b>
           </li>
           <li>
-            <a href="./Signup">Sign In</a>
+            <Link to="/Cart">Cart</Link>
           </li>
           <li>
-            <a href="./Help">Help</a>
+            <Link to="/Help">Help</Link>
           </li>
         </ul>
       </div>

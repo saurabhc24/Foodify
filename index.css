@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-body {
+body,
+Menu {
   font-family: "Montserrat" Arial, sans-serif;
 }
 
-.header{
+.header {
   display: flex;
   width: 100%;
   padding: none;
@@ -13,7 +14,7 @@ body {
   box-shadow: 2px 10px 20px rgba(163, 163, 162, 0.295);
 }
 
-.nav-items{
+.nav-items {
   display: flex;
   width: 100%;
   padding: none;
@@ -56,7 +57,7 @@ body {
 }
 
 .searchicon {
-  margin:0% 3%;
+  margin: 0% 3%;
 }
 
 .searchBtn {
@@ -89,8 +90,8 @@ a {
 }
 
 .res-container {
-  margin-left: calc(10% + 36px);
-  margin-right: calc(10% + 36px);
+  margin-left: calc(5% + 20px);
+  margin-right: calc(5% + 20px);
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -98,7 +99,7 @@ a {
 }
 
 .cards-container {
-  margin : 0px 10px;
+  margin: 0px 10px;
 }
 
 .card {
@@ -141,9 +142,9 @@ a {
   border-radius: 4px;
   background-color: #0a6d0acc;
   color: #fff;
-  font-weight: 700;
+  font-weight: 400;
   text-align: center;
-  max-width: 60px;
+  max-width: 80px;
   left: 3%;
   bottom: 6%;
   padding: 3px 6px;
@@ -154,7 +155,7 @@ a {
 }
 .card .card-description .about-place {
   display: inline-flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   align-items: center;
 }
 .card .card-description .about-place .place-name {
@@ -174,13 +175,12 @@ a {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  
 }
 
 .topRatedRes {
   margin-left: calc(10% + 36px);
   margin-right: calc(10% + 36px);
-  font-weight: 800;
+  font-weight: 750;
   font-size: 24px;
 }
 
@@ -193,42 +193,84 @@ a {
 
 .shine {
   background: #f6f7f8;
-  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
   background-repeat: no-repeat;
-  background-size: 800px 104px; 
+  background-size: 800px 104px;
   display: inline-block;
-  position: relative; 
-  
+  position: relative;
+
   -webkit-animation-duration: 0.8s;
-  -webkit-animation-fill-mode: forwards; 
+  -webkit-animation-fill-mode: forwards;
   -webkit-animation-direction: normal;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: placeholderShimmer;
   -webkit-animation-timing-function: linear;
-  }
+}
 
 .shimmer-card-media {
-    display: block!important;
-    width: 325px; 
-    height: 100px; 
-    margin-top: 15px;
-    background-color: #eaeaeb;
+  display: block !important;
+  width: 325px;
+  height: 100px;
+  margin-top: 15px;
+  background-color: #eaeaeb;
+}
+
+line {
+  height: 10px;
+  margin-top: 10px;
+  width: 200px;
+  background-color: white;
+}
+
+@-webkit-keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
   }
 
-  line {
-    height: 10px;
-    margin-top: 10px;
-    width: 200px;
-    background-color: white; 
+  100% {
+    background-position: 468px 0;
   }
+}
 
-  @-webkit-keyframes placeholderShimmer {
-    0% {
-      background-position: -468px 0;
-    }
-    
-    100% {
-      background-position: 468px 0; 
-    }
-  }
-  
+.Menu {
+  margin-top: 70px;
+  margin-left: calc(10% + 20px);
+  margin-right: calc(10% + 20px);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.restaurant-info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.restro-details > h2 {
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0px;
+}
+
+.restro-ratings {
+  border: 1px solid rgb(167, 167, 167);
+  border-radius: 20px;
+  font-size: x-small;
+}
+
+.rating {
+  color: #22c55e;
+}
+
+.total-rating {
+  box-sizing: border-box;
+  border: 0px solid  rgb(167, 167, 167);
+  border-top-width: 1px;
+}

@@ -1,10 +1,12 @@
 import { CDN_IMG_URL } from "../utils/constants";
 
+
 const RestroCard = (props) => {
   const { restaurant } = props;
 
-  const { avgRating, name, cuisines, areaName } = restaurant?.info;
-  const { slaString } = restaurant?.info?.sla;
+  const { avgRating, name, cuisines, areaName, totalRatingsString } =
+    restaurant?.info;
+  const { deliveryTime } = restaurant?.info?.sla;
 
   return (
     <div className="cards-container">
@@ -15,8 +17,10 @@ const RestroCard = (props) => {
             backgroundImage: `url(${CDN_IMG_URL}${restaurant?.info?.cloudinaryImageId})`,
           }}
         >
-          <div className="delivery-time">{slaString}</div>
-          <div className="rating">{avgRating} &#x2605;</div>
+          <div className="delivery-time">{deliveryTime} mins</div>
+          <div className="rating">
+            {avgRating} &#x2605; | {totalRatingsString}
+          </div>
         </div>
         <div className="card-description">
           <div className="about-place">
