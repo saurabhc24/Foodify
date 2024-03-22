@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import RestroCardShimmer from "./RestroCardShimmer";
 import { restaurant_fetch_url } from "../utils/constants";
 
+
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
