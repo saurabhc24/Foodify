@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { restaurant_menu_url } from "../utils/constants";
-import RestroCardShimmer from "./RestroCardShimmer";
+import RestroMenuShimmer from "./RestroMenuShimmer";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
@@ -23,26 +23,39 @@ const Menu = () => {
   };
   // console.log(resInfo);
   if (resInfo === null) {
-    return <RestroCardShimmer />;
+    return <RestroMenuShimmer />;
   }
 
   const { name, areaName, city, cuisines, avgRating, totalRatingsString, costForTwoMessage, sla } =
-    resInfo?.cards[0]?.card?.card?.info;
+    resInfo?.cards[2]?.card?.card?.info;
 
-  // data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.title
-
-  const { cards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
+  const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
 
   const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+
+    // conditional rendering
+    if (resInfo.length === null) {
+      let RestromenuShimmerArray = [];
+      for (let i = 0; i < 30; i++) {
+        RestromenuShimmerArray.push(<RestromenuShimmerArray key={i} />);
+      }
+      return (
+        <>
+          <div className="Menu RestroCardShimmerArray">
+            {RestromenuShimmerArray}
+          </div>
+        </>
+      );
+    }
 
   return (
     <div className="Menu">
       <div className="restaurant-info">
         <div className="restro-details">
-          <h2>{name}</h2>
-          <p>{cuisines.join(", ")}</p>
-          <span>{areaName + ", " + city}</span>
+          <div className="restromenu-name">{name}</div>
+          <div className="restromenu-cuisine">{cuisines.join(", ")}</div>
+          <div className="restromenu-area">{areaName + ", " + city}</div>
         </div>
         <div className="restro-ratings">
           <div className="rating">&#x2605; {avgRating}</div>
@@ -51,8 +64,9 @@ const Menu = () => {
         </div> 
       </div>
       <div className="restro-cost-deltime">
-        <span><BiSolidPieChart />{sla.slaString}</span><span><TbCoinRupee />{costForTwoMessage}</span>
+        <span><BiSolidPieChart /> {sla.slaString}</span><span><TbCoinRupee /> {costForTwoMessage}</span> 
       </div>
+      <hr className="restor-cost-line"></hr>
       <div className="menu-food-items">
         <div className="menu-section">
           {cards.slice(2, cards.length - 2).map((cards) => (

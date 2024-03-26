@@ -13,6 +13,7 @@ const Shimmer = () => {
                   <line className="place-name shine"></line>
                   <line className="place-speciality shine"></line>
                   <line className="location shine"></line>
+                  <br></br>
                 </div>
               </div>
             </div>

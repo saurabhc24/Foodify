@@ -2,7 +2,7 @@ import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import RestroCardShimmer from "./RestroCardShimmer";
 import { restaurant_fetch_url } from "../utils/constants";
-
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -91,7 +91,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurants) => (
-          <RestroCard key={restaurants.info.id} restaurant={restaurants} />
+          <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id }><RestroCard restaurant={restaurants} /></Link>
         ))}
       </div>
     </div>
