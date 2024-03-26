@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { restaurant_menu_url } from "../utils/constants";
+import { restaurant_menu_url, MENU_IMG_URL } from "../utils/constants";
 import RestroMenuShimmer from "./RestroMenuShimmer";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
@@ -26,28 +26,37 @@ const Menu = () => {
     return <RestroMenuShimmer />;
   }
 
-  const { name, areaName, city, cuisines, avgRating, totalRatingsString, costForTwoMessage, sla } =
-    resInfo?.cards[2]?.card?.card?.info;
+  const {
+    name,
+    areaName,
+    city,
+    cuisines,
+    avgRating,
+    totalRatingsString,
+    costForTwoMessage,
+    sla,
+    cloudinaryImageId,
+  } = resInfo?.cards[2]?.card?.card?.info;
 
   const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
 
   const { itemCards } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-    // conditional rendering
-    if (resInfo.length === null) {
-      let RestromenuShimmerArray = [];
-      for (let i = 0; i < 30; i++) {
-        RestromenuShimmerArray.push(<RestromenuShimmerArray key={i} />);
-      }
-      return (
-        <>
-          <div className="Menu RestroCardShimmerArray">
-            {RestromenuShimmerArray}
-          </div>
-        </>
-      );
+  // conditional rendering
+  if (resInfo.length === null) {
+    let RestromenuShimmerArray = [];
+    for (let i = 0; i < 30; i++) {
+      RestromenuShimmerArray.push(<RestromenuShimmerArray key={i} />);
     }
+    return (
+      <>
+        <div className="Menu RestroCardShimmerArray">
+          {RestromenuShimmerArray}
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="Menu">
@@ -61,10 +70,15 @@ const Menu = () => {
           <div className="rating">&#x2605; {avgRating}</div>
           <hr className="rating-sep"></hr>
           <div className="total-rating">{totalRatingsString}</div>
-        </div> 
+        </div>
       </div>
       <div className="restro-cost-deltime">
-        <span><BiSolidPieChart /> {sla.slaString}</span><span><TbCoinRupee /> {costForTwoMessage}</span> 
+        <span>
+          <BiSolidPieChart /> {sla.slaString}
+        </span>
+        <span>
+          <TbCoinRupee /> {costForTwoMessage}
+        </span>
       </div>
       <hr className="restor-cost-line"></hr>
       <div className="menu-food-items">
@@ -72,15 +86,21 @@ const Menu = () => {
           {cards.slice(2, cards.length - 2).map((cards) => (
             <div className="menu-category">
               <h3>{cards.card.card.title}</h3>
-              <div className="menu-display">
-                <div className="item-image">here image</div>
-                <div className="dish-info">
-                  here dish info
-                  <div className="dish-name">dish name</div>
-                  <div className="dish-price">dish price</div>
-                  <div className="dish-description">dish description</div>
+              {itemCards.map((itemCards) => (
+                <div className="menu-display">
+                  <div
+                    className="item-image"
+                    style={{
+                      backgroundImage: `url(${MENU_IMG_URL}${itemCards.card.info.imageId})`,
+                    }}
+                  ></div>
+                  <div className="dish-info">
+                    <div className="dish-name">{itemCards.card.info.name}</div>
+                    <div className="dish-price">₹ {itemCards.card.info.price/100 || itemCards.card.info.defaultPrice/100}</div>
+                    <div className="dish-description">{itemCards.card.info.description}</div>
+                  </div>
                 </div>
-              </div>
+              ))}
               <hr></hr>
             </div>
           ))}
