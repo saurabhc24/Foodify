@@ -5,6 +5,7 @@ import RestroMenuBannerShimmer from "./RestroMenuBannerShimmer";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
+import { MdOutlineImageNotSupported } from "react-icons/md";
 
 const Menu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -49,9 +50,6 @@ const Menu = () => {
   } = resInfo?.cards[2]?.card?.card?.info;
 
   const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
-
-  // const { itemCards } =
-  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
   // conditional rendering
 
@@ -98,7 +96,15 @@ const Menu = () => {
                     style={{
                       backgroundImage: `url(${MENU_IMG_URL}${itemCards.card.info.imageId})`,
                     }}
-                  ></div>
+                  >
+                    <div>
+                      {itemCards.card.info.imageId ? (
+                        ""
+                      ) : (
+                        <MdOutlineImageNotSupported />
+                      )}
+                    </div>
+                  </div>
                   <div className="dish-info">
                     <div className="dish-name">{itemCards.card.info.name}</div>
                     <div className="dish-price">

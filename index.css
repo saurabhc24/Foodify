@@ -349,10 +349,13 @@ hr.restor-cost-line {
   background-color: rgb(236, 236, 236);
   background-position: center;
   background-size: cover;
-  height: 160px;
+  height: 100px;
   width: 150px;
   object-fit:scale-down;
   border-radius: 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dish-info {
@@ -367,6 +370,6 @@ hr.restor-cost-line {
 .dish-description {
   color: rgba(128, 128, 128, 0.97);;
   font-size: small;
-  width: 700px;
+  width: 750px;
   word-wrap: break-word;
 }
