@@ -1,4 +1,4 @@
-export default getLocation = async () => {
+export async function getLocation() {
   try {
     if ('geolocation' in navigator) {
       const position = await new Promise((resolve, reject) => {

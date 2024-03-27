@@ -245,6 +245,7 @@ line {
   font-family: "Poppins";
 }
 
+
 .restaurant-info {
   margin-left: 40px;
   margin-right: 40px;
@@ -256,6 +257,19 @@ line {
 
 .restro-details {
   margin-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.resto-disp-image {
+  background-color: rgb(236, 236, 236);
+  background-position: center;
+  background-size: cover;
+  height: 150px;
+  width: 200px;
+  object-fit: fill;
+  border-radius: 15px 15px;
 }
 
 .restromenu-cuisine,
@@ -263,10 +277,17 @@ line {
   color: rgba(128, 128, 128, 0.97);
 }
 
+.restromenu-details {
+  margin-left: 15px;
+}
+
 .restromenu-name {
+  width: 600px;
   font-weight: 700;
   font-size: 30px;
   margin: 0px;
+  word-wrap: break-word;
+  float: right;
 }
 
 .restro-ratings {
@@ -274,7 +295,7 @@ line {
     0px 0px 0px 1px rgb(255, 255, 255);
   border-radius: 10px;
   padding: 15px;
-  margin-right: 15px;
+  margin: 15px;
   font-size: 14px;
   width: calc(2% + 70px);
   height: 70px;
@@ -317,17 +338,35 @@ hr.restor-cost-line {
   margin: 0px 15px;
 }
 
+.menu-display {
+  margin: 40px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .item-image {
   background-color: rgb(236, 236, 236);
   background-position: center;
   background-size: cover;
-  height: 100px;
+  height: 160px;
   width: 150px;
-  object-fit: fill;
+  object-fit:scale-down;
   border-radius: 15px 15px;
+}
+
+.dish-info {
+  margin-left: 30px;
 }
 
 .dish-name {
   font-size: 19px;
   font-weight: 700;
+}
+
+.dish-description {
+  color: rgba(128, 128, 128, 0.97);;
+  font-size: small;
+  width: 700px;
+  word-wrap: break-word;
 }

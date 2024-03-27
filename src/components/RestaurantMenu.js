@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { restaurant_menu_url, MENU_IMG_URL } from "../utils/constants";
 import RestroMenuShimmer from "./RestroMenuShimmer";
+import RestroMenuBannerShimmer from "./RestroMenuBannerShimmer";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
@@ -23,7 +24,16 @@ const Menu = () => {
   };
   // console.log(resInfo);
   if (resInfo === null) {
-    return <RestroMenuShimmer />;
+    let RestromenuShimmerArray = [];
+    RestromenuShimmerArray.push(<RestroMenuBannerShimmer />);
+    for (let i = 0; i < 10; i++) {
+      RestromenuShimmerArray.push(<RestroMenuShimmer key={i} />);
+    }
+    return (
+      <>
+        <div>{RestromenuShimmerArray}</div>
+      </>
+    );
   }
 
   const {
@@ -40,31 +50,26 @@ const Menu = () => {
 
   const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
 
-  const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+  // const { itemCards } =
+  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
   // conditional rendering
-  if (resInfo.length === null) {
-    let RestromenuShimmerArray = [];
-    for (let i = 0; i < 30; i++) {
-      RestromenuShimmerArray.push(<RestromenuShimmerArray key={i} />);
-    }
-    return (
-      <>
-        <div className="Menu RestroCardShimmerArray">
-          {RestromenuShimmerArray}
-        </div>
-      </>
-    );
-  }
 
   return (
     <div className="Menu">
       <div className="restaurant-info">
         <div className="restro-details">
-          <div className="restromenu-name">{name}</div>
-          <div className="restromenu-cuisine">{cuisines.join(", ")}</div>
-          <div className="restromenu-area">{areaName + ", " + city}</div>
+          <div
+            className="resto-disp-image"
+            style={{
+              backgroundImage: `url(${MENU_IMG_URL}${cloudinaryImageId})`,
+            }}
+          ></div>
+          <div className="restromenu-details">
+            <div className="restromenu-name">{name}</div>
+            <div className="restromenu-cuisine">{cuisines.join(", ")}</div>
+            <div className="restromenu-area">{areaName + ", " + city}</div>
+          </div>
         </div>
         <div className="restro-ratings">
           <div className="rating">&#x2605; {avgRating}</div>
@@ -86,7 +91,7 @@ const Menu = () => {
           {cards.slice(2, cards.length - 2).map((cards) => (
             <div className="menu-category">
               <h3>{cards.card.card.title}</h3>
-              {itemCards.map((itemCards) => (
+              {cards.card.card.itemCards?.map((itemCards) => (
                 <div className="menu-display">
                   <div
                     className="item-image"
@@ -96,8 +101,14 @@ const Menu = () => {
                   ></div>
                   <div className="dish-info">
                     <div className="dish-name">{itemCards.card.info.name}</div>
-                    <div className="dish-price">₹ {itemCards.card.info.price/100 || itemCards.card.info.defaultPrice/100}</div>
-                    <div className="dish-description">{itemCards.card.info.description}</div>
+                    <div className="dish-price">
+                      ₹{" "}
+                      {itemCards.card.info.price / 100 ||
+                        itemCards.card.info.defaultPrice / 100}
+                    </div>
+                    <div className="dish-description">
+                      {itemCards.card.info.description}
+                    </div>
                   </div>
                 </div>
               ))}
