@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
 import { MdOutlineImageNotSupported } from "react-icons/md";
+import MenuItemCard from "./MenuItemCard";
 
 const Menu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -90,33 +91,7 @@ const Menu = () => {
             <div className="menu-category">
               <h3>{cards.card.card.title}</h3>
               {cards.card.card.itemCards?.map((itemCards) => (
-                <div className="menu-display">
-                  <div
-                    className="item-image"
-                    style={{
-                      backgroundImage: `url(${MENU_IMG_URL}${itemCards.card.info.imageId})`,
-                    }}
-                  >
-                    <div>
-                      {itemCards.card.info.imageId ? (
-                        ""
-                      ) : (
-                        <MdOutlineImageNotSupported />
-                      )}
-                    </div>
-                  </div>
-                  <div className="dish-info">
-                    <div className="dish-name">{itemCards.card.info.name}</div>
-                    <div className="dish-price">
-                      ₹{" "}
-                      {itemCards.card.info.price / 100 ||
-                        itemCards.card.info.defaultPrice / 100}
-                    </div>
-                    <div className="dish-description">
-                      {itemCards.card.info.description}
-                    </div>
-                  </div>
-                </div>
+                <MenuItemCard itemCard={itemCards} />
               ))}
               <hr></hr>
             </div>
