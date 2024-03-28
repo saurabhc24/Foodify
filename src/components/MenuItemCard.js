@@ -4,7 +4,8 @@ import { MENU_IMG_URL } from "../utils/constants";
 const MenuItemCard = (props) => {
   const { itemCard } = props;
 
-  const { imageId,name,price,defaultPrice,description } = itemCard?.card?.info;
+  const { imageId, name, price, defaultPrice, description } =
+    itemCard?.card?.info;
 
   return (
     <div className="menu-card">
@@ -15,9 +16,7 @@ const MenuItemCard = (props) => {
             backgroundImage: `url(${MENU_IMG_URL}${imageId})`,
           }}
         >
-          <div>
-            {imageId ? "" : <MdOutlineImageNotSupported />}
-          </div>
+          <div>{imageId ? "" : <MdOutlineImageNotSupported />}</div>
         </div>
         <div className="dish-info">
           <div className="dish-name">{name}</div>

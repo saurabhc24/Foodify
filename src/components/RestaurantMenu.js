@@ -48,6 +48,7 @@ const Menu = () => {
     costForTwoMessage,
     sla,
     cloudinaryImageId,
+    availability,
   } = resInfo?.cards[2]?.card?.card?.info;
 
   const { cards } = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR;
@@ -78,7 +79,8 @@ const Menu = () => {
       </div>
       <div className="restro-cost-deltime">
         <span>
-          <BiSolidPieChart /> {sla.slaString}
+          <BiSolidPieChart />{" "}
+          {sla.slaString || availability.nextOpenTimeMessage}
         </span>
         <span>
           <TbCoinRupee /> {costForTwoMessage}
@@ -87,15 +89,24 @@ const Menu = () => {
       <hr className="restor-cost-line"></hr>
       <div className="menu-food-items">
         <div className="menu-section">
-          {cards.slice(2, cards.length - 2).map((cards) => (
+          {cards?.slice(2, cards.length - 2)?.map((cards) => (
+            <div>
             <div className="menu-category">
-              <h3>{cards.card.card.title}</h3>
+              <h3>
+                {cards.card.card.title +
+                  " (" +
+                  cards.card.card.itemCards?.length +
+                  ")"}
+              </h3>
               {cards.card.card.itemCards?.map((itemCards) => (
                 <MenuItemCard itemCard={itemCards} />
               ))}
-              <hr></hr>
+              
+            </div>
+            <hr className="menu-section-line"></hr>
             </div>
           ))}
+          
         </div>
       </div>
     </div>

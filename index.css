@@ -240,11 +240,10 @@ line {
 
 .Menu {
   margin-top: 50px;
-  margin-left: calc(10% + 20px);
-  margin-right: calc(10% + 20px);
+  margin-left: calc(10% + 10px);
+  margin-right: calc(10% + 10px);
   font-family: "Poppins";
 }
-
 
 .restaurant-info {
   margin-left: 40px;
@@ -325,24 +324,44 @@ line {
   margin-right: 40px;
 }
 
-hr.restor-cost-line {
+hr.restor-cost-line, hr.menu-section-line {
   border-top: 1px dashed rgba(128, 128, 128, 0.97);
 }
 
-.menu-food-items {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
 .menu-section {
-  margin: 0px 15px;
-}
-
-.menu-display {
-  margin: 40px 0px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+}
+
+.menu-category {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menu-category > h3 {
+  width: 100%;
+  margin: 20px 0px 0px 0px;
+}
+
+.menu-card {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 550px;
+  height: auto;
+}
+
+.menu-display {
+  margin: 30px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
 }
 
 .item-image {
@@ -351,7 +370,7 @@ hr.restor-cost-line {
   background-size: cover;
   height: 100px;
   width: 150px;
-  object-fit:scale-down;
+  object-fit: scale-down;
   border-radius: 15px 15px;
   display: flex;
   align-items: center;
@@ -359,17 +378,22 @@ hr.restor-cost-line {
 }
 
 .dish-info {
-  margin-left: 30px;
+  margin-left: 15px;
+  width: 350px;
 }
 
 .dish-name {
   font-size: 19px;
   font-weight: 700;
+  word-wrap: break-word;
 }
 
 .dish-description {
-  color: rgba(128, 128, 128, 0.97);;
+  color: rgba(128, 128, 128, 0.97);
   font-size: small;
-  width: 700px;
+  width: 300px;
+  overflow: hidden;
+  line-height: 1.5em;
+
   word-wrap: break-word;
 }
