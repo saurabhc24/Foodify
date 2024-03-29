@@ -10,14 +10,14 @@ const Shimmer = () => {
             <line className="restromenu-cuisine shine"></line>
             <br></br>
             <line className="restromenu-area shine"></line>
+            <div className="restro-cost-deltime ">
+              <line className="shine"></line>
+              {"\t"}
+              <line className="shine"></line>
+            </div>
           </div>
         </div>
         <line className="restro-ratings shine"></line>
-      </div>
-      <div className="restro-cost-deltime ">
-        <line className="shine"></line>
-        {"\t"}
-        <line className="shine"></line>
       </div>
       <hr className="restor-cost-line"></hr>
     </div>

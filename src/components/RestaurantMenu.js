@@ -27,13 +27,15 @@ const Menu = () => {
   // console.log(resInfo);
   if (resInfo === null) {
     let RestromenuShimmerArray = [];
-    RestromenuShimmerArray.push(<RestroMenuBannerShimmer />);
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       RestromenuShimmerArray.push(<RestroMenuShimmer key={i} />);
     }
     return (
       <>
-        <div>{RestromenuShimmerArray}</div>
+        <RestroMenuBannerShimmer />
+        <div className="menu-category RestromenuShimmerArray">
+          {RestromenuShimmerArray}
+        </div>
       </>
     );
   }
@@ -69,6 +71,15 @@ const Menu = () => {
             <div className="restromenu-name">{name}</div>
             <div className="restromenu-cuisine">{cuisines.join(", ")}</div>
             <div className="restromenu-area">{areaName + ", " + city}</div>
+            <div className="restro-cost-deltime">
+              <span>
+                <BiSolidPieChart />{" "}
+                {sla.slaString || availability.nextOpenTimeMessage}
+              </span>
+              <span>
+                <TbCoinRupee /> {costForTwoMessage}
+              </span>
+            </div>
           </div>
         </div>
         <div className="restro-ratings">
@@ -77,36 +88,27 @@ const Menu = () => {
           <div className="total-rating">{totalRatingsString}</div>
         </div>
       </div>
-      <div className="restro-cost-deltime">
-        <span>
-          <BiSolidPieChart />{" "}
-          {sla.slaString || availability.nextOpenTimeMessage}
-        </span>
-        <span>
-          <TbCoinRupee /> {costForTwoMessage}
-        </span>
-      </div>
+
       <hr className="restor-cost-line"></hr>
+
       <div className="menu-food-items">
         <div className="menu-section">
           {cards?.slice(2, cards.length - 2)?.map((cards) => (
             <div>
-            <div className="menu-category">
-              <h3>
-                {cards.card.card.title +
-                  " (" +
-                  cards.card.card.itemCards?.length +
-                  ")"}
-              </h3>
-              {cards.card.card.itemCards?.map((itemCards) => (
-                <MenuItemCard itemCard={itemCards} />
-              ))}
-              
-            </div>
-            <hr className="menu-section-line"></hr>
+              <div className="menu-category">
+                <h3>
+                  {cards.card.card.title +
+                    " (" +
+                    cards.card.card.itemCards?.length +
+                    ")"}
+                </h3>
+                {cards.card.card.itemCards?.map((itemCards) => (
+                  <MenuItemCard itemCard={itemCards} />
+                ))}
+              </div>
+              <hr className="menu-section-line"></hr>
             </div>
           ))}
-          
         </div>
       </div>
     </div>

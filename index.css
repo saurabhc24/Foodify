@@ -191,6 +191,8 @@ a {
   flex-direction: row;
 }
 
+
+
 .shine {
   background: #f6f7f8;
   background-image: linear-gradient(
@@ -246,12 +248,12 @@ line {
 }
 
 .restaurant-info {
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 30px 40px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .restro-details {
@@ -315,8 +317,8 @@ line {
   width: calc(75% + 10px);
 }
 .restro-cost-deltime {
-  margin: 20px 40px;
   font-weight: 700;
+  margin: 10px 0px;
 }
 
 .restro-cost-deltime > span {
@@ -324,8 +326,9 @@ line {
   margin-right: 40px;
 }
 
-hr.restor-cost-line, hr.menu-section-line {
-  border-top: 1px dashed rgba(128, 128, 128, 0.97);
+hr.restor-cost-line,
+hr.menu-section-line {
+  border: 0.2px dashed rgb(204, 204, 204);
 }
 
 .menu-section {
@@ -335,6 +338,7 @@ hr.restor-cost-line, hr.menu-section-line {
 }
 
 .menu-category {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
