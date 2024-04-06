@@ -11,7 +11,7 @@ const Shimmer = () => {
               <div className="about-place">
                 <div className="place">
                   <line className="place-name shine"></line>
-                  <line className="place-speciality shine"></line>
+                  <line className="place-speciality shine"></line><br></br>
                   <line className="location shine"></line>
                   <br></br>
                 </div>

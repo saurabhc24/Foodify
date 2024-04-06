@@ -93,22 +93,29 @@ const Menu = () => {
 
       <div className="menu-food-items">
         <div className="menu-section">
-          {cards?.slice(2, cards.length - 2)?.map((cards) => (
-            <div>
-              <div className="menu-category">
-                <h3>
-                  {cards.card.card.title +
-                    " (" +
-                    cards.card.card.itemCards?.length +
-                    ")"}
-                </h3>
-                {cards.card.card.itemCards?.map((itemCards) => (
-                  <MenuItemCard itemCard={itemCards} />
-                ))}
+          {cards
+            ?.slice(2, cards.length - 2)
+            ?.filter((cards) => cards.card.card?.itemCards != null)
+            .map((cards) => (
+              <div className="menu-div">
+                <div className="menu-category">
+                  <h3>
+                    {cards.card.card?.itemCards
+                      ? cards.card.card.title +
+                        " (" +
+                        cards.card.card.itemCards?.length +
+                        ")"
+                      : null}
+                  </h3>
+                  {cards.card.card?.itemCards
+                    ? cards.card.card.itemCards?.map((itemCards) => (
+                        <MenuItemCard itemCard={itemCards} />
+                      ))
+                    : null}
+                </div>
+                <hr className="menu-section-line"></hr>
               </div>
-              <hr className="menu-section-line"></hr>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

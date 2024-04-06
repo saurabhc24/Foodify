@@ -225,7 +225,7 @@ a {
 
 line {
   height: 13px;
-
+  border-radius: 20px;
   width: 200px;
   background-color: white;
 }
@@ -261,6 +261,7 @@ line {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  align-items: center;
 }
 
 .resto-disp-image {
@@ -336,6 +337,9 @@ hr.menu-section-line {
   flex-wrap: wrap;
   flex-direction: row;
 }
+.menu-div{
+  width: 100%;
+}
 
 .menu-category {
   width: 100%;
@@ -398,6 +402,6 @@ hr.menu-section-line {
   width: 300px;
   overflow: hidden;
   line-height: 1.5em;
-
+  max-height: 6em;
   word-wrap: break-word;
 }
