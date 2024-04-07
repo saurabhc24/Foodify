@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { restaurant_menu_url, MENU_IMG_URL } from "../utils/constants";
+import React from "react";
+import {  MENU_IMG_URL } from "../utils/constants";
 import RestroMenuShimmer from "./RestroMenuShimmer";
 import RestroMenuBannerShimmer from "./RestroMenuBannerShimmer";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
-import { MdOutlineImageNotSupported } from "react-icons/md";
 import MenuItemCard from "./MenuItemCard";
+import useRestaurantMenu from "../Hooks/useRestaurantMenu";
 
 const Menu = () => {
-  const [resInfo, setResInfo] = useState(null);
-
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []); //using empty dependency array so that we make API call on initial render and not everytime the page loads
+  const resInfo = useRestaurantMenu(resId);
 
-  const fetchMenu = async () => {
-    const data = await fetch(restaurant_menu_url + resId);
-
-    const jsonMenuData = await data.json();
-    console.log(jsonMenuData);
-    setResInfo(jsonMenuData.data);
-  };
   // console.log(resInfo);
   if (resInfo === null) {
     let RestromenuShimmerArray = [];
