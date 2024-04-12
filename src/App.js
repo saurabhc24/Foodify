@@ -8,10 +8,13 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Help from "./components/Help";
 import Login from "./components/Login";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AppLayout = () => {
   return (
     <div className="app">
+      <ToastContainer />
       <Header />
       <Outlet />
     </div>

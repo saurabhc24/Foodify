@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import RestroCardShimmer from "./RestroCardShimmer";
 import { restaurant_fetch_url } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../Hooks/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -24,13 +25,28 @@ const Body = () => {
           : jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants;
 
-      // console.log(listOfRestaurant)
+      // console.log(listOfRestaurantArray);
       setListOfRestaurant(listOfRestaurantArray);
       setFilteredRestaurant(listOfRestaurantArray);
     };
 
     fetchData();
   }, []);
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <>
+        <div className="flex flex-col justify-center align-middle">
+          <h1>Oops! Connection lost</h1>
+          <p>
+            Looks like you're offline, please check your internet connection.
+          </p>
+        </div>
+      </>
+    );
+  }
 
   // conditional rendering
   if (listOfRestaurant.length === 0) {
@@ -40,7 +56,7 @@ const Body = () => {
     }
     return (
       <>
-        <div className="res-container RestroCardShimmerArray">
+        <div className="mx-[100px] flex flex-wrap flex-row justify-evenly">
           {RestrocardShimmerArray}
         </div>
       </>
@@ -49,8 +65,8 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="searchbar">
-        <div className="searchicon">
+      <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
+        <div className="mx-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="#828282"
@@ -68,14 +84,14 @@ const Body = () => {
         <input
           type="text"
           placeholder="Search for restaurants and food"
-          className="searchbarinput"
+          className="w-full h-8 mr-5 py-2 text-xl outline-none text-gray-700"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         ></input>
         <button
-          className="searchBtn"
+          className="m-0 mx-3 font-montserrat font-sans bg-orange-500 text-white border-0 py-2 px-4 rounded-lg"
           onClick={() => {
             const filteredRestaurantList = listOfRestaurant.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -89,9 +105,14 @@ const Body = () => {
       <div className="topRatedBtn">
         <h2 className="topRatedRes">Restaurants near you</h2>
       </div>
-      <div className="res-container">
+      <div className="mx-[100px] flex flex-wrap flex-row justify-evenly">
         {filteredRestaurant.map((restaurants) => (
-          <Link key={restaurants.info.id} to={"/restaurants/" + restaurants.info.id }><RestroCard restaurant={restaurants} /></Link>
+          <Link
+            key={restaurants.info.id}
+            to={"/restaurants/" + restaurants.info.id}
+          >
+            <RestroCard restaurant={restaurants} />
+          </Link>
         ))}
       </div>
     </div>

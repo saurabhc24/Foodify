@@ -1,7 +1,7 @@
 const Shimmer = () => {
   return (
     <div className="body">
-      <div className="res-container">
+      <div className="mx-4 flex flex-wrap flex-row justify-evenly">
         <div className="cards-container">
           <div className="card">
             <photo className="card-media shine">

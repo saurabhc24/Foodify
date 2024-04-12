@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export async function getLocation() {
   try {
     if ('geolocation' in navigator) {
