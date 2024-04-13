@@ -8,22 +8,22 @@ const MenuItemCard = (props) => {
     itemCard?.card?.info;
 
   return (
-    <div className="menu-card">
-      <div className="menu-display">
+    <div className="flex flex-wrap flex-col justify-center items-center h-auto">
+      <div className="mx-0 my-7 flex flex-wrap flex-row items-center">
         <div
-          className="item-image"
+          className="w-40 h-28 bg-gray-200 bg-center bg-cover rounded-lg flex items-center justify-center"
           style={{
             backgroundImage: `url(${MENU_IMG_URL}${imageId})`,
           }}
         >
           <div>{imageId ? "" : <MdOutlineImageNotSupported />}</div>
         </div>
-        <div className="dish-info">
-          <div className="dish-name">{name}</div>
+        <div className="ml-[15px] w-[350px]">
+          <div className="text-lg font-bold break-words">{name}</div>
           <div className="dish-price">
             ₹ {price / 100 || defaultPrice / 100}
           </div>
-          <div className="dish-description">{description}</div>
+          <div className="text-gray-500 text-sm w-72 overflow-hidden leading-relaxed max-h-24 break-words">{description}</div>
         </div>
       </div>
     </div>

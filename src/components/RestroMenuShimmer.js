@@ -1,61 +1,55 @@
 const Shimmer = () => {
   return (
-    <div className="Menu">
-      <div className="menu-food-items">
-        <div className="menu-section ">
+    <div className="mt-12 mx-44">
+      <div>
+        <div className="flex flex-wrap flex-row">
           <div>
             <line className="shine"></line>
-            <div className="menu-category">
-              <div className="menu-card">
-                <div className="menu-display">
-                  <div className="item-image shine">
+            <div className="w-full flex flex-wrap justify-between">
+              <div className="flex flex-wrap flex-row justify-center align-middle h-auto">
+                <div className="mx-0 my-8 flex flex-wrap flex-row items-center">
+                  <div className="h-[100px] w-[150px] rounded-lg flex items-center justify-centere shine">
                     <div></div>
                   </div>
-                  <div className="dish-info">
-                    <line className="dish-name shine"></line>
-                    <line className="dish-price shine"></line>
-                    <line className="dish-description shine"></line>
+                  <div className="ml-[15px] w-[350px]">
+                    <line className="shine"></line>
+                    <line className="shine"></line>
+                    <line className="shine"></line>
                   </div>
                 </div>
-              </div>
-              <div className="menu-card">
-                <div className="menu-display">
-                  <div className="item-image shine">
+                <div className="mx-0 my-8 flex flex-wrap flex-row items-center">
+                  <div className="h-[100px] w-[150px] rounded-lg flex items-center justify-centere shine">
                     <div></div>
                   </div>
-                  <div className="dish-info">
-                    <line className="dish-name shine"></line>
-                    <line className="dish-price shine"></line>
-                    <line className="dish-description shine"></line>
+                  <div className="ml-[15px] w-[350px]">
+                    <line className="shine"></line>
+                    <line className="shine"></line>
+                    <line className="shine"></line>
                   </div>
                 </div>
-              </div>
-              <div className="menu-card">
-                <div className="menu-display">
-                  <div className="item-image shine">
+                <div className="mx-0 my-8 flex flex-wrap flex-row items-center">
+                  <div className="h-[100px] w-[150px] rounded-lg flex items-center justify-centere shine">
                     <div></div>
                   </div>
-                  <div className="dish-info">
-                    <line className="dish-name shine"></line>
-                    <line className="dish-price shine"></line>
-                    <line className="dish-description shine"></line>
+                  <div className="ml-[15px] w-[350px]">
+                    <line className="shine"></line>
+                    <line className="shine"></line>
+                    <line className="shine"></line>
                   </div>
                 </div>
-              </div>
-              <div className="menu-card">
-                <div className="menu-display">
-                  <div className="item-image shine">
+                <div className="mx-0 my-8 flex flex-wrap flex-row items-center">
+                  <div className="h-[100px] w-[150px] rounded-lg flex items-center justify-centere shine">
                     <div></div>
                   </div>
-                  <div className="dish-info">
-                    <line className="dish-name shine"></line>
-                    <line className="dish-price shine"></line>
-                    <line className="dish-description shine"></line>
+                  <div className="ml-[15px] w-[350px]">
+                    <line className="shine"></line>
+                    <line className="shine"></line>
+                    <line className="shine"></line>
                   </div>
                 </div>
               </div>
             </div>
-            <hr className="menu-section-line" ></hr>
+            <hr className="menu-section-line"></hr>
           </div>
         </div>
       </div>

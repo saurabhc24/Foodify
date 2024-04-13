@@ -1,5 +1,5 @@
 import React from "react";
-import {  MENU_IMG_URL } from "../utils/constants";
+import { MENU_IMG_URL } from "../utils/constants";
 import RestroMenuShimmer from "./RestroMenuShimmer";
 import RestroMenuBannerShimmer from "./RestroMenuBannerShimmer";
 import { useParams } from "react-router-dom";
@@ -22,7 +22,7 @@ const Menu = () => {
     return (
       <>
         <RestroMenuBannerShimmer />
-        <div className="menu-category RestromenuShimmerArray">
+        <div className="w-full flex flex-wrap flex-row justify-between">
           {RestromenuShimmerArray}
         </div>
       </>
@@ -47,48 +47,49 @@ const Menu = () => {
   // conditional rendering
 
   return (
-    <div className="Menu">
-      <div className="restaurant-info">
-        <div className="restro-details">
+    <div className="mt-12 mx-44">
+      <div className="mx-[40px] my-[30px] flex flex-wrap flex-row justify-between items-center">
+        <div className="ml-[15px] flex flex-wrap flex-row items-center">
           <div
-            className="resto-disp-image"
+            className="bg-white h-[150px] w-[200px] bg-cover rounded-2xl"
             style={{
               backgroundImage: `url(${MENU_IMG_URL}${cloudinaryImageId})`,
             }}
           ></div>
-          <div className="restromenu-details">
-            <div className="restromenu-name">{name}</div>
-            <div className="restromenu-cuisine">{cuisines.join(", ")}</div>
-            <div className="restromenu-area">{areaName + ", " + city}</div>
-            <div className="restro-cost-deltime">
-              <span>
-                <BiSolidPieChart />{" "}
-                {sla.slaString || availability.nextOpenTimeMessage}
-              </span>
-              <span>
-                <TbCoinRupee /> {costForTwoMessage}
+          <div className="ml-[15px]">
+            <div className="w-[600px] font-bold text-[30px]">{name}</div>
+            <div className="text-slate-500">{cuisines.join(", ")}</div>
+            <div className="text-slate-500">{areaName + ", " + city}</div>
+            <div className="font-bold my-[10px] mx-0 flex flex-wrap flex-row">
+              <span className="flex flex-row items-center">
+                <BiSolidPieChart />
+                &nbsp;&nbsp;{sla.slaString || availability.nextOpenTimeMessage}
+              </span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span className="flex flex-row items-center w-auto mx-[5px]">
+                <TbCoinRupee />
+                &nbsp;&nbsp;{costForTwoMessage}
               </span>
             </div>
           </div>
         </div>
-        <div className="restro-ratings">
-          <div className="rating">&#x2605; {avgRating}</div>
-          <hr className="rating-sep"></hr>
+        <div className="flex flex-wrap flex-col justify-evenly items-center shadow-md border border-white rounded-lg p-[15px] m-[15px] ">
+          <div className="text-green-600 font-bold">&#x2605; {avgRating}</div>
+          <hr className="border-gray-300 w-20"></hr>
           <div className="total-rating">{totalRatingsString}</div>
         </div>
       </div>
 
-      <hr className="restor-cost-line"></hr>
+      <hr className="border-dashed border-t border-gray-300"></hr>
 
       <div className="menu-food-items">
-        <div className="menu-section">
+        <div className="flex flex-wrap flex-row">
           {cards
             ?.slice(2, cards.length - 2)
             ?.filter((cards) => cards.card.card?.itemCards != null)
             .map((cards) => (
-              <div className="menu-div">
-                <div className="menu-category">
-                  <h3>
+              <div className="w-full">
+                <div className="w-full flex flex-wrap justify-between">
+                  <h3 className="w-full mt-5 font-bold text-[25px]">
                     {cards.card.card?.itemCards
                       ? cards.card.card.title +
                         " (" +
@@ -102,7 +103,7 @@ const Menu = () => {
                       ))
                     : null}
                 </div>
-                <hr className="menu-section-line"></hr>
+                <hr className="border-dashed border-t border-gray-300"></hr>
               </div>
             ))}
         </div>

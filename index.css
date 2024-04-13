@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,102 +9,10 @@
   font-family: "Poppins" Arial, sans-serif;
 }
 
-
 a {
   text-decoration: none;
   color: inherit;
 }
-
-
-.cards-container {
-  margin: 0px 10px;
-}
-
-.card {
-  background-color: #fff;
-  box-shadow: 10px 10px 40px 2px rgba(128, 128, 128, 0.15);
-  margin-top: 20px;
-  width: 300px;
-  border-radius: 15px;
-}
-
-.card:hover {
-  cursor: pointer;
-  transform: scale(0.95);
-}
-
-.card .card-media {
-  background-position: center;
-  background-size: cover;
-  height: 150px;
-  width: 100%;
-  object-fit: fill;
-  border-radius: 15px 15px 0 0;
-  position: relative;
-}
-
-.card .card-media .delivery-time {
-  position: absolute;
-  background-color: #f5f5f5;
-  max-width: 60px;
-  padding: 3px 6px;
-  font-size: 13px;
-  right: 3%;
-  bottom: 6%;
-  border-radius: 4px;
-}
-
-.card .card-media .rating {
-  position: absolute;
-  font-size: 13px;
-  border-radius: 4px;
-  background-color: #0a6d0acc;
-  color: #fff;
-  font-weight: 400;
-  text-align: center;
-  max-width: 80px;
-  left: 3%;
-  bottom: 6%;
-  padding: 3px 6px;
-}
-
-.card .card-description {
-  padding: 0px 15px;
-}
-.card .card-description .about-place {
-  display: inline-flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.card .card-description .about-place .place-name {
-  font-size: 17px;
-  margin: 10px 0px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-.card .card-description .about-place .place-speciality,
-.card .card-description .about-place .location {
-  font-size: 13px;
-  color: rgba(128, 128, 128, 0.97);
-  line-height: 18px;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.topRatedRes {
-  margin-left: calc(10% + 36px);
-  margin-right: calc(10% + 36px);
-  font-weight: 750;
-  font-size: 24px;
-}
-
-
-
-
 
 .shine {
   background: #f6f7f8;
@@ -113,7 +24,7 @@ a {
     #f6f7f8 100%
   );
   background-repeat: no-repeat;
-  background-size: 800px 104px;
+  background-size: 800px;
   display: inline-block;
   position: relative;
 
@@ -125,13 +36,6 @@ a {
   -webkit-animation-timing-function: linear;
 }
 
-.shimmer-card-media {
-  display: block !important;
-  width: 325px;
-  height: 100px;
-  margin-top: 15px;
-  background-color: #eaeaeb;
-}
 
 line {
   height: 13px;
@@ -149,169 +53,3 @@ line {
     background-position: 468px 0;
   }
 }
-
-.Menu {
-  margin-top: 50px;
-  margin-left: calc(10% + 10px);
-  margin-right: calc(10% + 10px);
-  font-family: "Poppins";
-}
-
-.restaurant-info {
-  margin: 30px 40px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.restro-details {
-  margin-left: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-}
-
-.resto-disp-image {
-  background-color: rgb(236, 236, 236);
-  background-position: center;
-  background-size: cover;
-  height: 150px;
-  width: 200px;
-  object-fit: fill;
-  border-radius: 15px 15px;
-}
-
-.restromenu-cuisine,
-.restromenu-area {
-  color: rgba(128, 128, 128, 0.97);
-}
-
-.restromenu-details {
-  margin-left: 15px;
-}
-
-.restromenu-name {
-  width: 600px;
-  font-weight: 700;
-  font-size: 30px;
-  margin: 0px;
-  word-wrap: break-word;
-  float: right;
-}
-
-.restro-ratings {
-  box-shadow: 1px 1px 9px 1px rgba(0, 0, 0, 0.09),
-    0px 0px 0px 1px rgb(255, 255, 255);
-  border-radius: 10px;
-  padding: 15px;
-  margin: 15px;
-  font-size: 14px;
-  width: calc(2% + 70px);
-  height: 70px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.rating {
-  color: #22c55e;
-  font-weight: bolder;
-}
-
-.rating-sep {
-  border-top: 1px solid rgb(202, 202, 202);
-  width: calc(75% + 10px);
-}
-.restro-cost-deltime {
-  font-weight: 700;
-  margin: 10px 0px;
-}
-
-.restro-cost-deltime > span {
-  display: inline-block;
-  margin-right: 40px;
-}
-
-hr.restor-cost-line,
-hr.menu-section-line {
-  border: 0.2px dashed rgb(204, 204, 204);
-}
-
-.menu-section {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-.menu-div{
-  width: 100%;
-}
-
-.menu-category {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.menu-category > h3 {
-  width: 100%;
-  margin: 20px 0px 0px 0px;
-}
-
-.menu-card {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 550px;
-  height: auto;
-}
-
-.menu-display {
-  margin: 30px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-}
-
-.item-image {
-  background-color: rgb(236, 236, 236);
-  background-position: center;
-  background-size: cover;
-  height: 100px;
-  width: 150px;
-  object-fit: scale-down;
-  border-radius: 15px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dish-info {
-  margin-left: 15px;
-  width: 350px;
-}
-
-.dish-name {
-  font-size: 19px;
-  font-weight: 700;
-  word-wrap: break-word;
-}
-
-.dish-description {
-  color: rgba(128, 128, 128, 0.97);
-  font-size: small;
-  width: 300px;
-  overflow: hidden;
-  line-height: 1.5em;
-  max-height: 6em;
-  word-wrap: break-word;
-} 
