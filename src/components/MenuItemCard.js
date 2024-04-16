@@ -4,7 +4,7 @@ import { MENU_IMG_URL } from "../utils/constants";
 const MenuItemCard = (props) => {
   const { itemCard } = props;
 
-  const { imageId, name, price, defaultPrice, description } =
+  const { imageId, name, price, defaultPrice, description, isBestseller } =
     itemCard?.card?.info;
 
   return (
@@ -20,8 +20,8 @@ const MenuItemCard = (props) => {
         </div>
         <div className="ml-[15px] w-[350px]">
           <div className="text-lg font-bold break-words">{name}</div>
-          <div className="dish-price">
-            ₹ {price / 100 || defaultPrice / 100}
+          <div className="dish-price font-semibold text-mg">
+            ₹ {price / 100 || defaultPrice / 100}&nbsp;&nbsp;<span className="text-orange-500">{isBestseller ? "Bestseller" : "" }</span>
           </div>
           <div className="text-gray-500 text-sm w-72 overflow-hidden leading-relaxed max-h-24 break-words">{description}</div>
         </div>

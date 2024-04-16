@@ -13,7 +13,8 @@ const Menu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  // console.log(resInfo);
+  console.log(resInfo);
+
   if (resInfo === null) {
     let RestromenuShimmerArray = [];
     for (let i = 0; i < 5; i++) {
@@ -64,7 +65,8 @@ const Menu = () => {
               <span className="flex flex-row items-center">
                 <BiSolidPieChart />
                 &nbsp;&nbsp;{sla.slaString || availability.nextOpenTimeMessage}
-              </span>&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
               <span className="flex flex-row items-center w-auto mx-[5px]">
                 <TbCoinRupee />
                 &nbsp;&nbsp;{costForTwoMessage}

@@ -9,7 +9,7 @@ const RestroCard = (props) => {
   const { deliveryTime } = restaurant?.info?.sla;
 
   return (
-    <div className="mx-[10px] my-0">
+    <div className="mx-[20px]">
       <div className="bg-white shadow-lg hover:cursor-pointer hover:scale-95 mt-7 rounded-lg overflow-hidden w-72">
         <div
           className="bg-center bg-cover h-40 w-full relative"
@@ -23,7 +23,7 @@ const RestroCard = (props) => {
           </div>
         </div>
         <div className="p-4">
-          <div className="flex justify-between items-center mb-3">
+          <div className="flex justify-between items-center">
             <div className="place">
               <p className="text-xl font-bold text-gray-900 line-clamp-1">{name}</p>
               <p className="text-sm text-gray-600 line-clamp-1">{cuisines.join(", ")}</p>

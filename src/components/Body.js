@@ -15,14 +15,14 @@ const Body = () => {
       const response = await fetch(restaurant_fetch_url);
       const jsonData = await response.json();
 
-      // console.log(jsonData);
+      console.log(jsonData);
 
       const listOfRestaurantArray =
-        (jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        (jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants).length === 0
-          ? jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ? jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants
-          : jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          : jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants;
 
       // console.log(listOfRestaurantArray);
@@ -128,17 +128,23 @@ const Body = () => {
         </button>
       </div>
       <div className="topRated">
-        <h2 className="mx-[200px] font-bold text-[24px]">Restaurants near you</h2>
+        <h2 className="mx-[200px] font-bold text-[24px]">
+          Restaurants near you
+        </h2>
       </div>
-      <div className="mx-[100px] flex flex-wrap flex-row justify-evenly">
-        {filteredRestaurant.map((restaurants) => (
-          <Link
-            key={restaurants.info.id}
-            to={"/restaurants/" + restaurants.info.id}
-          >
-            <RestroCard restaurant={restaurants} />
-          </Link>
-        ))}
+      <div className="justify-center items-center mx-[150px]">
+        <div className="flex flex-wrap flex-row justify-start">
+          {filteredRestaurant.map((restaurants) => (
+            <Link
+              key={restaurants.info.id}
+              to={"/restaurants/" + restaurants.info.id}
+            >
+              <div className="justify-around">
+                <RestroCard restaurant={restaurants} />
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
