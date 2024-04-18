@@ -9,7 +9,7 @@ const Header = () => {
           <img className="w-16 py-3" src={foodify} />
         </Link>
       </div>
-      <div className="flex w-full justify-between flex-row-reverse mr-10">
+      <div className="flex w-full justify-between flex-row-reverse">
         <ul className="flex text-base list-none text-gray-600">
           <li className="m-4 p-4 float-right hover:text-black">
             <Link to="/Cart">Cart</Link>

@@ -15,7 +15,7 @@ const Body = () => {
       const response = await fetch(restaurant_fetch_url);
       const jsonData = await response.json();
 
-      console.log(jsonData);
+      // console.log(jsonData);
 
       const listOfRestaurantArray =
         (jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle

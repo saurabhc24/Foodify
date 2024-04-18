@@ -9,7 +9,7 @@ const RestroCard = (props) => {
   const { deliveryTime } = restaurant?.info?.sla;
 
   return (
-    <div className="mx-[20px]">
+    <div className="mx-[43px]">
       <div className="bg-white shadow-lg hover:cursor-pointer hover:scale-95 mt-7 rounded-lg overflow-hidden w-72">
         <div
           className="bg-center bg-cover h-40 w-full relative"

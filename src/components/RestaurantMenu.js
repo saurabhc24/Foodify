@@ -2,18 +2,31 @@ import React from "react";
 import { MENU_IMG_URL } from "../utils/constants";
 import RestroMenuShimmer from "./RestroMenuShimmer";
 import RestroMenuBannerShimmer from "./RestroMenuBannerShimmer";
+import useRestaurantMenu from "../Hooks/useRestaurantMenu";
+import RestaurantMenuItem from "./RestaurantMenuItem";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
-import MenuItemCard from "./MenuItemCard";
-import useRestaurantMenu from "../Hooks/useRestaurantMenu";
+import { FaChevronDown } from "react-icons/fa";
+import { FaChevronUp } from "react-icons/fa";
 
 const Menu = () => {
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
 
-  console.log(resInfo);
+  const [activeAccordionIndex, setActiveAccordionIndex] = useState(0);
+
+  const handleToggleAccordion = (index) => {
+    if (index === activeAccordionIndex) {
+      setActiveAccordionIndex(null);
+    } else {
+      setActiveAccordionIndex(index);
+    }
+  };
+
+  // console.log(resInfo);
 
   if (resInfo === null) {
     let RestromenuShimmerArray = [];
@@ -84,26 +97,39 @@ const Menu = () => {
       <hr className="border-dashed border-t border-gray-300"></hr>
 
       <div className="menu-food-items">
-        <div className="flex flex-wrap flex-row">
+        <div className="flex flex-wrap flex-row ">
           {cards
             ?.slice(2, cards.length - 2)
             ?.filter((cards) => cards.card.card?.itemCards != null)
-            .map((cards) => (
-              <div className="w-full">
-                <div className="w-full flex flex-wrap justify-between">
-                  <h3 className="w-full mt-5 font-bold text-[25px]">
-                    {cards.card.card?.itemCards
-                      ? cards.card.card.title +
-                        " (" +
-                        cards.card.card.itemCards?.length +
-                        ")"
-                      : null}
-                  </h3>
-                  {cards.card.card?.itemCards
-                    ? cards.card.card.itemCards?.map((itemCards) => (
-                        <MenuItemCard itemCard={itemCards} />
-                      ))
-                    : null}
+            .map((cards, i) => (
+              <div
+                className="w-full"
+                onClick={() => setActiveAccordionIndex(i)}
+              >
+                <div className="w-full">
+                  <button className="w-full mt-5 mb-5 flex flex-wrap flex-row justify-between items-center">
+                    <div className="font-bold text-[25px]">
+                      {cards.card.card?.itemCards
+                        ? cards.card.card.title +
+                          " (" +
+                          cards.card.card.itemCards?.length +
+                          ")"
+                        : null}
+                    </div>
+                    <div className="mr-[20px]">
+                      {activeAccordionIndex === i ? (
+                        <FaChevronUp className="w-4 h-4 " />
+                      ) : (
+                        <FaChevronDown className="w-4 h-4" />
+                      )}
+                    </div>
+                  </button>
+                  
+                  {activeAccordionIndex === i && (<RestaurantMenuItem
+                    cardItems={cards}
+                    key={i}
+                    index={i}
+                  />)}
                 </div>
                 <hr className="border-dashed border-t border-gray-300"></hr>
               </div>
