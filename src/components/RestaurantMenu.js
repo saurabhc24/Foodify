@@ -65,7 +65,7 @@ const Menu = () => {
   // conditional rendering
 
   return (
-    <div className="mt-12 mx-44">
+    <div className="w-9/12 mx-auto">
       <div className="mx-[40px] my-[30px] flex flex-wrap flex-row justify-between items-center">
         <div className="ml-[15px] flex flex-wrap flex-row items-center">
           <div
