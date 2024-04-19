@@ -16,16 +16,20 @@ const Menu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  const [activeAccordionIndex, setActiveAccordionIndex] = useState(0);
+  const [activeAccordionIndex, setActiveAccordionIndex] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
 
-  const handleToggleAccordion = (index) => {
-    if (index === activeAccordionIndex) {
+  const handleToggleAccordion = (i) => {
+    if (i === activeAccordionIndex) {
       setActiveAccordionIndex(null);
+      setShowMenu(false);
     } else {
-      setActiveAccordionIndex(index);
+      setActiveAccordionIndex(i);
+      setShowMenu(true);
     }
   };
 
+  console.log(activeAccordionIndex, showMenu);
   // console.log(resInfo);
 
   if (resInfo === null) {
@@ -88,9 +92,9 @@ const Menu = () => {
           </div>
         </div>
         <div className="flex flex-wrap flex-col justify-evenly items-center shadow-md border border-white rounded-lg p-[15px] m-[15px] ">
-          <div className="text-green-600 font-bold">&#x2605; {avgRating}</div>
+          <div className="text-green-600 font-bold mb-2">&#x2605; {avgRating}</div>
           <hr className="border-gray-300 w-20"></hr>
-          <div className="total-rating">{totalRatingsString}</div>
+          <div className="total-rating mt-2">{totalRatingsString}</div>
         </div>
       </div>
 
@@ -102,13 +106,10 @@ const Menu = () => {
             ?.slice(2, cards.length - 2)
             ?.filter((cards) => cards.card.card?.itemCards != null)
             .map((cards, i) => (
-              <div
-                className="w-full"
-                onClick={() => setActiveAccordionIndex(i)}
-              >
+              <div className="w-full" onClick={() => handleToggleAccordion(i)}>
                 <div className="w-full">
-                  <button className="w-full mt-5 mb-5 flex flex-wrap flex-row justify-between items-center">
-                    <div className="font-bold text-[25px]">
+                  <button className="w-full h-[50px] mt-[20px] flex flex-wrap flex-row justify-between items-center rounded-lg bg-gray-50">
+                    <div className="font-bold text-[18px] ml-[20px]">
                       {cards.card.card?.itemCards
                         ? cards.card.card.title +
                           " (" +
@@ -124,14 +125,14 @@ const Menu = () => {
                       )}
                     </div>
                   </button>
-                  
-                  {activeAccordionIndex === i && (<RestaurantMenuItem
-                    cardItems={cards}
-                    key={i}
-                    index={i}
-                  />)}
+                  {activeAccordionIndex === i && showMenu && (
+                    <RestaurantMenuItem
+                      cardItems={cards}
+                      key={cards.card.card.title}
+                      index={i}
+                    />
+                  )}
                 </div>
-                <hr className="border-dashed border-t border-gray-300"></hr>
               </div>
             ))}
         </div>

@@ -10,31 +10,32 @@ const MenuItemCard = (props) => {
 
   return (
     <div className="flex flex-wrap flex-col justify-center items-center h-auto">
-      <div className="mx-0 my-7 flex flex-wrap flex-row items-center">
-        <div
-          className="w-40 h-28 bg-gray-200 bg-center bg-cover rounded-lg flex  "
-          style={{
-            backgroundImage: `url(${MENU_IMG_URL}${imageId})`,
-          }}
-        >
-          <div className="h-0 w-0 ">
-            {imageId ? (
-              isBestseller ? (
-                <div className="inline-block text-white bg-orange-500 text-xs font-bold p-[5px] rounded relative bottom-2 right-2 ">
-                  Bestseller
-                  {""}
-                </div>
-              ) : null
-            ) : (
-              <MdOutlineImageNotSupported />
-            )}
+      <div className="flex flex-wrap flex-row items-center">
+        <div className="mx-0 my-7 ">
+          <div
+            className="w-40 h-28 bg-gray-200 bg-center bg-cover rounded-lg flex  "
+            style={{
+              backgroundImage: `url(${MENU_IMG_URL}${imageId})`,
+            }}
+          >
+            <div className="flex flex-wrap justify-center w-full">
+              {imageId ? (
+                isBestseller ? (
+                  <div className="h-[25px] text-white bg-orange-500 text-xs font-bold p-[5px] rounded relative bottom-2 right-14">
+                    Bestseller
+                    {""}
+                  </div>
+                ) : null
+              ) : (
+                <MdOutlineImageNotSupported className=" items-center mx-auto my-auto" />
+              )}
+            </div>
           </div>
-          <div className="h-0 w-0">
-            <button className=" text-green-500 bg-white font-bold px-[25px] py-[5px] rounded-[7px] relative top-24 left-10 shadow-md border">
-              Add
-            </button>
-          </div>
+          <button className=" text-green-500 bg-white font-bold px-[25px] py-[5px] rounded-[7px] relative bottom-3 left-10 shadow-md border">
+            Add
+          </button>
         </div>
+
         <div className="ml-[15px] w-[350px]">
           <div className="text-lg font-bold break-words">{name}</div>
           <div className="dish-price font-semibold text-mg flex flex-wrap flex-row items-center">
