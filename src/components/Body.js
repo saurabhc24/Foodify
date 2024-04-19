@@ -128,20 +128,20 @@ const Body = () => {
         </button>
       </div>
       <div className="topRated">
-        <h2 className="mx-[200px] font-bold text-[24px]">
+        <h2 className="mx-[100px] font-bold text-[24px]">
           Restaurants near you
         </h2>
       </div>
-      <div className="justify-center items-center mx-[150px]">
-        <div className="flex flex-wrap flex-row justify-start">
+      <div className="mx-[70px] ">
+        <div className="mx-auto flex flex-wrap flex-row justify-around">
           {filteredRestaurant.map((restaurants) => (
             <Link
               key={restaurants.info.id}
               to={"/restaurants/" + restaurants.info.id}
             >
-              <div className="justify-around">
+
                 <RestroCard restaurant={restaurants} />
-              </div>
+
             </Link>
           ))}
         </div>
