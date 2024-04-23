@@ -139,12 +139,11 @@ const Body = () => {
               key={restaurants.info.id}
               to={"/restaurants/" + restaurants.info.id}
             >
-
-                <RestroCard restaurant={restaurants} />
-
+              <RestroCard restaurant={restaurants} />
             </Link>
           ))}
         </div>
+        <hr className="border-solid border-t border-gray-300 mt-[30px]"></hr>
       </div>
     </div>
   );

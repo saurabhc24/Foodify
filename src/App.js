@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { useLayoutEffect } from 'react';
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Body from "./components/Body";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
@@ -11,10 +13,16 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import "react-toastify/dist/ReactToastify.css";
 
 const AppLayout = () => {
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="app">
       <Header />
       <Outlet />
+      <Footer className="absolute bottom-0"/>
     </div>
   );
 };
