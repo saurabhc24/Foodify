@@ -16,8 +16,8 @@ const Menu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  const [activeAccordionIndex, setActiveAccordionIndex] = useState(null);
-  const [showMenu, setShowMenu] = useState(false);
+  const [activeAccordionIndex, setActiveAccordionIndex] = useState(0);
+  const [showMenu, setShowMenu] = useState(true);
 
   const handleToggleAccordion = (i) => {
     if (i === activeAccordionIndex) {
