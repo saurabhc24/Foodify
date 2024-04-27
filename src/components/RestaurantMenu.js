@@ -8,8 +8,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { BiSolidPieChart } from "react-icons/bi";
 import { TbCoinRupee } from "react-icons/tb";
-import { FaChevronDown } from "react-icons/fa";
-import { FaChevronUp } from "react-icons/fa";
+
 
 const Menu = () => {
   const { resId } = useParams();
@@ -28,9 +27,6 @@ const Menu = () => {
       setShowMenu(true);
     }
   };
-
-  console.log(activeAccordionIndex, showMenu);
-  // console.log(resInfo);
 
   if (resInfo === null) {
     let RestromenuShimmerArray = [];
@@ -92,7 +88,9 @@ const Menu = () => {
           </div>
         </div>
         <div className="flex flex-wrap flex-col justify-evenly items-center shadow-md border border-white rounded-lg p-[15px] m-[15px] ">
-          <div className="text-green-600 font-bold mb-2">&#x2605; {avgRating}</div>
+          <div className="text-green-600 font-bold mb-2">
+            &#x2605; {avgRating}
+          </div>
           <hr className="border-gray-300 w-20"></hr>
           <div className="total-rating mt-2">{totalRatingsString}</div>
         </div>
@@ -101,41 +99,19 @@ const Menu = () => {
       <hr className="border-dashed border-t border-gray-300"></hr>
 
       <div className="menu-food-items">
-        <div className="flex flex-wrap flex-row ">
-          {cards
-            ?.slice(2, cards.length - 2)
-            ?.filter((cards) => cards.card.card?.itemCards != null)
-            .map((cards, i) => (
-              <div className="w-full" onClick={() => handleToggleAccordion(i)}>
-                <div className="w-full">
-                  <button className="w-full h-[50px] mt-[20px] flex flex-wrap flex-row justify-between items-center rounded-lg bg-gray-50">
-                    <div className="font-bold text-[18px] ml-[20px]">
-                      {cards.card.card?.itemCards
-                        ? cards.card.card.title +
-                          " (" +
-                          cards.card.card.itemCards?.length +
-                          ")"
-                        : null}
-                    </div>
-                    <div className="mr-[20px]">
-                      {activeAccordionIndex === i ? (
-                        <FaChevronUp className="w-4 h-4 " />
-                      ) : (
-                        <FaChevronDown className="w-4 h-4" />
-                      )}
-                    </div>
-                  </button>
-                  {activeAccordionIndex === i && showMenu && (
-                    <RestaurantMenuItem
-                      cardItems={cards}
-                      key={cards.card.card.title}
-                      index={i}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
-        </div>
+        {cards
+          ?.slice(2, cards.length - 2)
+          ?.filter((cards) => cards.card.card?.itemCards != null)
+          .map((cards, i) => (
+            <RestaurantMenuItem
+              cards={cards}
+              key={cards.card.card.title}
+              index={i}
+              activeIndex={activeAccordionIndex}
+              setActiveAccordionIndex={handleToggleAccordion}
+              show = {showMenu}
+            />
+          ))}
       </div>
     </div>
   );
