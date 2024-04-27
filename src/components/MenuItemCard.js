@@ -1,6 +1,8 @@
+import toast from "react-hot-toast";
 import { MdOutlineImageNotSupported } from "react-icons/md";
-import { HiTrendingUp } from "react-icons/hi";
 import { MENU_IMG_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../slice/cartSlice";
 
 const MenuItemCard = (props) => {
   const { itemCard } = props;
@@ -8,8 +10,15 @@ const MenuItemCard = (props) => {
   const { imageId, name, price, defaultPrice, description, isBestseller } =
     itemCard?.card?.info;
 
+  const dispatch = useDispatch();
+
+  const addItem = () => {
+    dispatch(addToCart());
+    toast.success('Added to cart!');
+  };
+
   return (
-    <div className="flex flex-wrap flex-col justify-center items-center h-auto">
+    <div className="flex flex-wrap flex-col justify-center items-center h-auto" >
       <div className="flex flex-wrap flex-row items-center">
         <div className="mx-0 my-7 ">
           <div
@@ -31,7 +40,10 @@ const MenuItemCard = (props) => {
               )}
             </div>
           </div>
-          <button className=" text-green-500 bg-white font-bold px-[25px] py-[5px] rounded-[7px] relative bottom-3 left-10 shadow-md border">
+          <button
+            className=" text-green-500 bg-white font-bold px-[25px] py-[5px] rounded-[7px] relative bottom-3 left-10 shadow-md border"
+            onClick={addItem}
+          >
             Add
           </button>
         </div>

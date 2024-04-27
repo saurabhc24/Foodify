@@ -1,29 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect } from "react";
+import { Provider } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Body from "./components/Body";
 import Error from "./components/Error";
 import Cart from "./components/Cart";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Help from "./components/Help";
+import About from "./components/About"
 import Login from "./components/Login";
 import RestaurantMenu from "./components/RestaurantMenu";
 import "react-toastify/dist/ReactToastify.css";
+import appStore from "./store/appStore";
 
 const AppLayout = () => {
-
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-      <Footer className="absolute bottom-0"/>
-    </div>
+    <Provider store={appStore}>
+      <div className="app">
+        <Toaster />
+        <Header />
+        <Outlet />
+        <Footer className="absolute bottom-0" />
+      </div>
+    </Provider>
   );
 };
 
@@ -37,8 +42,8 @@ const appRouter = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "/help",
-        element: <Help />,
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/cart",
