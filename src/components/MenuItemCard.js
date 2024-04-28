@@ -14,7 +14,7 @@ const MenuItemCard = (props) => {
 
   const addItem = () => {
     dispatch(addToCart());
-    toast.success('Added to cart!');
+    toast.success('Item added to cart!');
   };
 
   return (
