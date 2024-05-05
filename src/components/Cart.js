@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import cart from "../media/cart.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseItemQuantity,
@@ -29,8 +31,14 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="flex grow min-h-[60vh] justify-center items-center">
-        <p>Your cart is empty!</p>
+      <div className="flex flex-col grow min-h-[60vh] justify-center items-center">
+        <img className=" w-52 py-11" src={cart} />
+        <p className=" text-[20px] font-bold">No items in your cart, but plenty on our menu! </p>
+        <button className="my-6 mx-3 font-montserrat font-sans bg-orange-200/50 hover:bg-orange-200/80 font-bold text-orange-500 border-0 py-2 px-4 rounded-lg">
+          <Link to="/" className="relative flex items-center gap-2">
+            <p>Browse Restaurants</p>
+          </Link>
+        </button>
       </div>
     );
   }
@@ -65,11 +73,14 @@ const Cart = () => {
                       {item?.quantity *
                         parseFloat(
                           item?.item?.card?.info?.finalPrice / 100 ||
-                            item?.item?.card?.info?.defaultPrice / 100
+                            item?.item?.card?.info?.defaultPrice / 100 ||
+                            item?.item?.card?.info?.price / 100
                         )}
-                      <span  className='text-gray-800 font-normal'>
-                         {"  "}({item?.item?.card?.info?.finalPrice / 100 ||
-                          item?.item?.card?.info?.defaultPrice / 100}
+                      <span className="text-gray-800 font-normal">
+                        {"  "}(
+                        {item?.item?.card?.info?.finalPrice / 100 ||
+                          item?.item?.card?.info?.defaultPrice / 100 ||
+                          item?.item?.card?.info?.price / 100}
                         {" × "}
                         {item?.quantity})
                       </span>
@@ -120,11 +131,7 @@ const Cart = () => {
           <div className="py-4 text-lg space-y-4 border-b">
             <div className="flex justify-between items-center font-semibold">
               <p className="font-normal">Price ({cartItems.length} items)</p>
-              <p>
-                ₹{" "}
-                {parseFloat(cartItems?.item?.card?.info?.defaultPrice / 100) ||
-                  parseFloat(cartItems?.item?.card?.info?.finalPrice / 100)}
-              </p>
+              <p>₹ {parseFloat(totalPrice / 100)}</p>
             </div>
             <div className="flex justify-between items-center font-semibold">
               <p className="font-normal">Discount (10%)</p>
