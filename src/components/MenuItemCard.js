@@ -12,9 +12,9 @@ const MenuItemCard = (props) => {
 
   const dispatch = useDispatch();
 
-  const addItem = () => {
-    dispatch(addToCart());
-    toast.success('Item added to cart!');
+  const addItem = (itemCard) => {
+    dispatch(addToCart(itemCard));
+    toast.success('Added to cart!');
   };
 
   return (
@@ -42,7 +42,7 @@ const MenuItemCard = (props) => {
           </div>
           <button
             className=" text-green-500 bg-white font-bold px-[25px] py-[5px] rounded-[7px] relative bottom-3 left-10 shadow-md border"
-            onClick={addItem}
+            onClick={() => addItem(itemCard)}
           >
             Add
           </button>
