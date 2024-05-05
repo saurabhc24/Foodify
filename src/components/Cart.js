@@ -31,7 +31,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="flex flex-col grow min-h-[60vh] justify-center items-center">
+      <div className="flex flex-col grow min-h-[75vh] justify-center items-center">
         <img className=" w-52 py-11" src={cart} />
         <p className=" text-[20px] font-bold">No items in your cart, but plenty on our menu! </p>
         <button className="my-6 mx-3 font-montserrat font-sans bg-orange-200/50 hover:bg-orange-200/80 font-bold text-orange-500 border-0 py-2 px-4 rounded-lg">
