@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import cart from "../media/cart.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearCart,
   decreaseItemQuantity,
   increaseItemQuantity,
   removeFromCart,
-  selectItemsInCart,
   selectTotalPrice,
 } from "../slice/cartSlice";
 import { MENU_IMG_URL } from "../utils/constants";
@@ -14,26 +14,28 @@ import { MENU_IMG_URL } from "../utils/constants";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log(cartItems);
-
   const dispatch = useDispatch();
 
   const removeItem = (id) => dispatch(removeFromCart({ id }));
   const decreaseQuantity = (id) => dispatch(decreaseItemQuantity({ id }));
   const increaseQuantity = (id) => dispatch(increaseItemQuantity({ id }));
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   const totalPrice = useSelector(selectTotalPrice);
   const discount = (totalPrice * 0.1) / 100;
   const deliveryCharges = (totalPrice * 0.05) / 100;
   const totalAmt = totalPrice / 100 + deliveryCharges - discount;
 
-  console.log("total price", totalPrice);
-
   if (cartItems.length === 0) {
     return (
       <div className="flex flex-col grow min-h-[75vh] justify-center items-center">
         <img className=" w-52 py-11" src={cart} />
-        <p className=" text-[20px] font-bold">No items in your cart, but plenty on our menu! </p>
+        <p className=" text-[20px] font-bold">
+          No items in your cart, but plenty on our menu!{" "}
+        </p>
         <button className="my-6 mx-3 font-montserrat font-sans bg-orange-200/50 hover:bg-orange-200/80 font-bold text-orange-500 border-0 py-2 px-4 rounded-lg">
           <Link to="/" className="relative flex items-center gap-2">
             <p>Browse Restaurants</p>
@@ -155,10 +157,17 @@ const Cart = () => {
               </h1>
             </div>
           </div>
-
-          <button className="w-full block mt-4 uppercase font-bold text-lg bg-orange-600 text-white text-center p-4 rounded-md">
-            Place order
-          </button>
+          <div className="flex flex-wrap flex-row ">
+            <button className="flex-1 block mt-4 mx-1 uppercase font-bold text-lg bg-orange-600 text-white text-center p-4 rounded-md">
+              Place order
+            </button>
+            <button
+              onClick={() => handleClearCart()}
+              className="flex-1 block mt-4 mx-1 uppercase font-bold text-lg border border-orange-600 text-orange-600 bg-white text-center p-4 rounded-md"
+            >
+              Clear Cart
+            </button>
+          </div>
         </div>
       </div>
     </div>
