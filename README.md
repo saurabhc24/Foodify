@@ -1,4 +1,4 @@
-# FoodHunt
+# Foodify
 
 A food delivery application made using React and Swiggy's API. Enhanced UI with visually appealing shimmer effects. Featuring restaurant lists, search, accordion menus, and cart functionality
 
