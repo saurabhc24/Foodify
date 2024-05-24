@@ -17,8 +17,11 @@ const About = () => {
               Hi, I'm <br></br>
               <b>SAURABH CHANDRA</b>
             </p>
-            <p className="text-lg text-gray-500">
+            <p className="text-lg text-gray-600">
               Learning to Build Responsive and Engaging Web Experiences.
+              <br></br>
+              📩: saurabhc.work@gmail.com<br></br>
+              📍: Bengaluru, Karnataka, India 🇮🇳
             </p>
             <div className="flex flex-wrap flex-row justify-between gap-2 mt-7">
               <Link
@@ -27,7 +30,7 @@ const About = () => {
                 rel="noopener noreferrer"
               >
                 <FaGithub
-                  size={30}
+                  size={35}
                   className="text-gray-800 hover:text-gray-600"
                 />
               </Link>
@@ -37,10 +40,19 @@ const About = () => {
                 rel="noopener noreferrer"
               >
                 <FaLinkedin
-                  size={30}
+                  size={35}
                   className="text-blue-600 hover:text-blue-400"
                 />
               </Link>
+              <button className=" text-white bg-blue-700 font-bold px-[25px] py-[3px] rounded-[7px] shadow-md border">
+                <Link
+                  to="https://drive.google.com/file/d/1K6570F_oR91wDJXExNxvY9gtPDUv-OsR/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Resume
+                </Link>
+              </button>
             </div>
           </div>
         </div>

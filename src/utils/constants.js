@@ -58,13 +58,13 @@ export const skills = {
       icon: "tailwindcss",
       title: "TailwindCSS",
       iconUrl:
-        "https://cdn.iconscout.com/icon/free/png-512/free-tailwind-css-5285308-4406745.png?f=webp&w=256",
+        "https://img.icons8.com/?size=100&id=CIAZz2CYc6Kc&format=png&color=000000",
     },
     {
       icon: "bootstrap",
       title: "Bootstrap",
       iconUrl:
-        "https://cdn.iconscout.com/icon/free/png-512/free-bootstrap-3521314-2944733.png?f=webp&w=256",
+        "https://cdn.iconscout.com/icon/premium/png-512-thumb/bootstrap-9305875-7694074.png?f=webp&w=256",
     }],
   },
   design :{
@@ -75,6 +75,28 @@ export const skills = {
       title: "Figma",
       iconUrl:
         "https://cdn.iconscout.com/icon/free/png-512/free-figma-3521426-2944870.png?f=webp&w=256",
-    }],
+    },
+    {
+      icon: "adobexd",
+      title: "AdobeXD",
+      iconUrl:
+        "https://cdn.iconscout.com/icon/free/png-512/free-adobe-xd-1607248-1361791.png?f=webp&w=256",
+    },
+    {
+      icon: "behance",
+      title: "Behance",
+      iconUrl:
+        "https://cdn.iconscout.com/icon/premium/png-512-thumb/behance-2752234-2285051.png?f=webp&w=256",
+        portfolioUrl : "https://www.behance.net/saurabhchandra24",
+    },
+    {
+      icon: "dribbble",
+      title: "Dribbble",
+      iconUrl:
+        "https://cdn.iconscout.com/icon/free/png-512/free-dribbble-180-721947.png?f=webp&w=256",
+        portfolioUrl : "https://dribbble.com/saurabhc24",
+        
+    },
+    ],
   },
 };
