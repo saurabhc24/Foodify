@@ -8,7 +8,51 @@ import SkillCard from "./SkillCard";
 const About = () => {
   return (
     <div className="my-7 mx-20 min-h-[70vh]">
-      <p className="text-4xl font-semibold">Behind the Code</p>
+      <div className="">
+        <p className="text-4xl font-semibold">Foodify</p>
+        <p className="mt-2 text-lg">
+          Foodify Live is a dynamic and user-friendly food delivery application
+          developed using modern web technologies to offer an enhanced user
+          experience. The application leverages React for its robust and
+          efficient component-based architecture, Tailwind CSS for sleek and
+          responsive design, Parcel for fast and optimized bundling, and
+          Swiggy’s API to fetch real-time, up-to-date restaurant information.
+          The project also implements Redux Toolkit to manage the state of the
+          application efficiently, ensuring a smooth and seamless user
+          experience.<br></br>
+          This project was built during the coursework of{" "}
+          <Link
+            to="https://namastedev.com/learn/namaste-react"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-orange-500"
+          >
+            Namaste React
+          </Link>{" "}
+          taught by {" "}
+          <Link
+            to="https://www.linkedin.com/in/akshaymarch7/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-orange-500"
+          >
+             Akshay Saini
+          </Link>
+          <p className="mt-4">
+            <b>
+              <u>Key Features</u>
+            </b>
+            <ul className="text-base">
+              <li>🔸Real-Time Restaurant Information</li>
+              <li>🔸Shimmer Effects</li>
+              <li>🔸Restaurant Lists and Search Functionality</li>
+              <li>🔸Accordion Menus</li>
+              <li>🔸Cart Functionality</li>
+            </ul>
+          </p>
+        </p>
+      </div>
+      <p className="mt-6 text-4xl font-semibold">Behind the Code</p>
       <div className="my-7 flex flex-wrap flex-row justify-between min-h-[60vh]">
         <div className="w-4/12">
           <img className="w-[180px] h-[180px] rounded-full" src={me}></img>
