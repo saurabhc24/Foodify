@@ -1,9 +1,9 @@
 {
-    "routes": [
-      {
-        "src": "/(.*)",
-        "status": 404,
-        "dest": "/Error"
-      }
-    ]
-  }
+  "routes": [
+    {
+      "src": "/[^.]+",
+      "dest": "/",
+      "status": 200
+    }
+  ]
+}
