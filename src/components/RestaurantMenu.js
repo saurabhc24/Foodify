@@ -71,7 +71,7 @@ const Menu = () => {
             }}
           ></div>
           <div className="ml-[15px]">
-            <div className="w-[600px] font-bold text-[30px]">{name}</div>
+            <div className="w-9/12 font-bold text-[30px]">{name}</div>
             <div className="text-slate-500">{cuisines.join(", ")}</div>
             <div className="text-slate-500">{areaName + ", " + city}</div>
             <div className="font-bold my-[10px] mx-0 flex flex-wrap flex-row">
