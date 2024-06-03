@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <div className="flex w-full justify-between [box-shadow:2px_10px_20px_rgba(163,_163,_162,_0.295)]">
-      <div className=" ml-10">
+      <div className="my-auto ml-10">
         <Link to="/">
           <img className="w-16 py-3" src={foodify} />
         </Link>

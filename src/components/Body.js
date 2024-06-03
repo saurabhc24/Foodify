@@ -12,11 +12,12 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [restroData, setRestroData] = useState();
+  const [userLoc, setUserLoc] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const locationRes = await getLocation();
-
+      setUserLoc(locationRes);
       const restaurant_fetch_url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationRes.latitude}&lng=${locationRes.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
 
       const response = await fetch(restaurant_fetch_url);
@@ -65,7 +66,7 @@ const Body = () => {
     }
     return (
       <>
-        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-5/12 mx-auto my-5 flex items-center">
+        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
           <div className="w-[200px] relative flex border-r-2 pr-3">
             <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
             <p className="hidden md:block text-gray-600 mx-auto">
@@ -85,8 +86,13 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="mx-[100px] flex flex-wrap flex-row justify-evenly">
-          {RestrocardShimmerArray}
+        <div>
+          <line className="mx-[100px] text-gray-600 w-24 shine"></line>
+        </div>
+        <div className="mx-[70px]">
+          <div className="mx-auto flex flex-wrap flex-row justify-around">
+            {RestrocardShimmerArray}
+          </div>
         </div>
       </>
     );
@@ -128,10 +134,10 @@ const Body = () => {
       </div>
       <div className="topRated">
         <h2 className="mx-[100px] font-bold text-[24px]">
-          Restaurants near you
+          Order food online in {userLoc.locData.results[0].sublocality}
         </h2>
       </div>
-      <div className="mx-[70px] ">
+      <div className="mx-[70px]">
         <div className="mx-auto flex flex-wrap flex-row justify-around">
           {filteredRestaurant.map((restaurants) => (
             <Link

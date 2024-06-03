@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
           <div className="grid grid-row-4 grid-flow-col justify-between">
             <div>
-              <p className=" text-base font-medium text-gray-900">COMPANY</p>
+              <p className="mb-2 text-base font-medium text-gray-900">COMPANY</p>
               <ul className="text-gray-500">
                 <li>About</li>
                 <li>Career</li>
@@ -32,7 +32,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <p className=" text-base font-medium text-gray-900">
+              <p className="mb-2 text-base font-medium text-gray-900">
                 FOR RESTAURANTS
               </p>
               <ul className="text-gray-500">
@@ -41,7 +41,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <p className=" text-base font-medium text-gray-900">LEGAL</p>
+              <p className="mb-2 text-base font-medium text-gray-900">LEGAL</p>
               <ul className="text-gray-500">
                 <li>Terms & Conditions</li>
                 <li>Cookie Policy</li>
@@ -49,10 +49,10 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <p className=" text-base font-medium  text-gray-900">
+              <p className="mb-2 text-base font-medium  text-gray-900">
                 SOCIAL LINKS
               </p>
-              <div className=" mt-2 flex flex-wrap flex-row gap-2 justify-between">
+              <div className="flex flex-wrap flex-row gap-2 justify-between">
                 <FaInstagram  className=" hover:text-pink-600"/>
                 <FaYoutube className=" hover:text-red-600"/>
                 <RiTwitterXFill className=" hover:text-cyan-600"/>
