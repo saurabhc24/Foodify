@@ -16,7 +16,7 @@ const About = () => {
           experience. The application leverages React for its robust and
           efficient component-based architecture, Tailwind CSS for sleek and
           responsive design, Parcel for fast and optimized bundling, and
-          Swiggy’s API to fetch real-time, up-to-date restaurant information.
+          Swiggy’s API to fetch real-time, up-to-date restaurant information according to user's current location.
           The project also implements Redux Toolkit to manage the state of the
           application efficiently, ensuring a smooth and seamless user
           experience.<br></br>
@@ -43,11 +43,12 @@ const About = () => {
               <u>Key Features</u>
             </b>
             <ul className="text-base">
-              <li>🔸Real-Time Restaurant Information</li>
+              <li>🔸Real-Time Restaurant Information using User's Location</li>
               <li>🔸Shimmer Effects</li>
               <li>🔸Restaurant Lists and Search Functionality</li>
               <li>🔸Accordion Menus</li>
               <li>🔸Cart Functionality</li>
+              <li>🔸Error Handling for non-existent pages</li>
             </ul>
           </p>
         </p>

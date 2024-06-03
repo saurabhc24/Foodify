@@ -13,10 +13,12 @@ This project was built as a part of the course [Namaste React](https://namastede
 
 ## Features
 
+- Real-Time Restaurant Information using user's current location
 - Add to cart
 - Shimmer UI
 - Accordion menu list
 - Search restaurant 
+- Error Handling for non-existent pages
 
 ## How to use
 

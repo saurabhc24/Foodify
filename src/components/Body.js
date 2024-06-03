@@ -11,17 +11,15 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [locDetails, setLocDetails] = useState([]);
   const [restroData, setRestroData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const locationRes = await getLocation();
-      setLocDetails(locationRes);
 
-      const response = await fetch(
-        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationRes.latitude}&lng=${locationRes.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
-      );
+      const restaurant_fetch_url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationRes.latitude}&lng=${locationRes.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+
+      const response = await fetch(restaurant_fetch_url);
       const jsonData = await response.json();
 
       setRestroData(jsonData);
@@ -71,7 +69,7 @@ const Body = () => {
           <div className="w-[200px] relative flex border-r-2 pr-3">
             <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
             <p className="hidden md:block text-gray-600 mx-auto">
-              <line className="text-sm text-gray-600 w-7 shine"></line>
+              <line className="text-sm text-gray-600 w-10 shine"></line>
             </p>
           </div>
 
@@ -80,7 +78,7 @@ const Body = () => {
           </div>
           <input
             type="text"
-            placeholder="Search for restaurants, cuisines or a dish"
+            placeholder="Search for restaurants"
             className="w-full h-8 mr-5 py-2 text-xl outline-none text-gray-700"
           ></input>
           <button className="m-0 mx-3 font-montserrat font-sans bg-orange-500 text-white border-0 py-2 px-4 rounded-lg">
@@ -99,8 +97,8 @@ const Body = () => {
       <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
         <div className="w-[200px] relative flex border-r-2 pr-3">
           <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
-          <p className="hidden md:block text-gray-600 mx-auto">
-            {restroData.data.cards[11].card.card.citySlug.toUpperCase()}
+          <p className=" capitalize hidden md:block text-gray-600 mx-auto">
+            {restroData.data.cards[11].card.card.citySlug}
           </p>
         </div>
 
@@ -109,7 +107,7 @@ const Body = () => {
         </div>
         <input
           type="text"
-          placeholder="Search for restaurants, cuisines or a dish"
+          placeholder="Search for restaurants"
           className="w-full h-8 mr-5 py-2 text-xl outline-none text-gray-700"
           value={searchText}
           onChange={(e) => {

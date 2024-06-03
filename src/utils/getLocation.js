@@ -11,23 +11,8 @@ export async function getLocation() {
 
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
-      const url = `https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?lat=${latitude}&lng=${longitude}`;
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
-          "X-RapidAPI-Host":
-            "address-from-to-latitude-longitude.p.rapidapi.com",
-        },
-      };
-
-      const res = await fetch(url, options);
-
-      const locData = await res.json();
-
-      // console.log(locData);
-
-      return { longitude, latitude, locData };
+      
+      return { latitude, longitude };
     } else {
       throw new Error("Geolocation is not supported in your browser");
     }
