@@ -1,21 +1,32 @@
 import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import RestroCardShimmer from "./RestroCardShimmer";
-import { restaurant_fetch_url } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../Hooks/useOnlineStatus";
+import { getLocation } from "../utils/getLocation";
+import { IoSearch } from "react-icons/io5";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [locDetails, setLocDetails] = useState([]);
+  const [restroData, setRestroData] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(restaurant_fetch_url);
+      const locationRes = await getLocation();
+      setLocDetails(locationRes);
+
+      const response = await fetch(
+        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${locationRes.latitude}&lng=${locationRes.longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+      );
       const jsonData = await response.json();
 
-      console.log(jsonData);
+      setRestroData(jsonData);
+
+      // console.log(jsonData);
 
       const listOfRestaurantArray =
         (jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
@@ -25,7 +36,7 @@ const Body = () => {
           : jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
               ?.restaurants;
 
-      console.log(listOfRestaurantArray);
+      // console.log(listOfRestaurantArray);
       setListOfRestaurant(listOfRestaurantArray);
       setFilteredRestaurant(listOfRestaurantArray);
     };
@@ -38,8 +49,8 @@ const Body = () => {
   if (onlineStatus === false) {
     return (
       <>
-        <div className="flex flex-col justify-center items-center">
-          <h1>Oops! Connection lost</h1>
+        <div className="min-h-[75vh] flex flex-col justify-center items-center">
+          <h1>⚠️Oops! Connection lost⚠️</h1>
           <p>
             Looks like you're offline, please check your internet connection.
           </p>
@@ -56,25 +67,20 @@ const Body = () => {
     }
     return (
       <>
-        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
+        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-5/12 mx-auto my-5 flex items-center">
+          <div className="w-[200px] relative flex border-r-2 pr-3">
+            <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
+            <p className="hidden md:block text-gray-600 mx-auto">
+              <line className="text-sm text-gray-600 w-7 shine"></line>
+            </p>
+          </div>
+
           <div className="mx-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#828282"
-              width="18"
-              height="18"
-              viewBox="0 0 20 20"
-              aria-labelledby="icon-svg-title- icon-svg-desc-"
-              role="img"
-              class="sc-rbbb40-0 iwHbVQ"
-            >
-              <title>Search</title>
-              <path d="M19.78 19.12l-3.88-3.9c1.28-1.6 2.080-3.6 2.080-5.8 0-5-3.98-9-8.98-9s-9 4-9 9c0 5 4 9 9 9 2.2 0 4.2-0.8 5.8-2.1l3.88 3.9c0.1 0.1 0.3 0.2 0.5 0.2s0.4-0.1 0.5-0.2c0.4-0.3 0.4-0.8 0.1-1.1zM1.5 9.42c0-4.1 3.4-7.5 7.5-7.5s7.48 3.4 7.48 7.5-3.38 7.5-7.48 7.5c-4.1 0-7.5-3.4-7.5-7.5z"></path>
-            </svg>
+            <IoSearch className="w-[20px] h-[20px] text-gray-400" />
           </div>
           <input
             type="text"
-            placeholder="Search for restaurants and food"
+            placeholder="Search for restaurants, cuisines or a dish"
             className="w-full h-8 mr-5 py-2 text-xl outline-none text-gray-700"
           ></input>
           <button className="m-0 mx-3 font-montserrat font-sans bg-orange-500 text-white border-0 py-2 px-4 rounded-lg">
@@ -91,24 +97,19 @@ const Body = () => {
   return (
     <div className="body">
       <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
+        <div className="w-[200px] relative flex border-r-2 pr-3">
+          <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
+          <p className="hidden md:block text-gray-600 mx-auto">
+            {restroData.data.cards[11].card.card.citySlug.toUpperCase()}
+          </p>
+        </div>
+
         <div className="mx-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#828282"
-            width="18"
-            height="18"
-            viewBox="0 0 20 20"
-            aria-labelledby="icon-svg-title- icon-svg-desc-"
-            role="img"
-            class="sc-rbbb40-0 iwHbVQ"
-          >
-            <title>Search</title>
-            <path d="M19.78 19.12l-3.88-3.9c1.28-1.6 2.080-3.6 2.080-5.8 0-5-3.98-9-8.98-9s-9 4-9 9c0 5 4 9 9 9 2.2 0 4.2-0.8 5.8-2.1l3.88 3.9c0.1 0.1 0.3 0.2 0.5 0.2s0.4-0.1 0.5-0.2c0.4-0.3 0.4-0.8 0.1-1.1zM1.5 9.42c0-4.1 3.4-7.5 7.5-7.5s7.48 3.4 7.48 7.5-3.38 7.5-7.48 7.5c-4.1 0-7.5-3.4-7.5-7.5z"></path>
-          </svg>
+          <IoSearch className="w-[20px] h-[20px] text-gray-400" />
         </div>
         <input
           type="text"
-          placeholder="Search for restaurants and food"
+          placeholder="Search for restaurants, cuisines or a dish"
           className="w-full h-8 mr-5 py-2 text-xl outline-none text-gray-700"
           value={searchText}
           onChange={(e) => {

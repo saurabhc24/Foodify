@@ -2,7 +2,7 @@ require("dotenv").config();
 
 export async function getLocation() {
   try {
-    if ('geolocation' in navigator) {
+    if ("geolocation" in navigator) {
       const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
       });
@@ -11,23 +11,27 @@ export async function getLocation() {
 
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
+      const url = `https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?lat=${latitude}&lng=${longitude}`;
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
+          "X-RapidAPI-Host":
+            "address-from-to-latitude-longitude.p.rapidapi.com",
+        },
+      };
 
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_CITY_API_KEY}`
-      );
+      const res = await fetch(url, options);
 
-      const city = await res.json();
+      const locData = await res.json();
 
-      //   console.log(city.name);
+      // console.log(locData);
 
-      //   console.log('Latitude: ' + latitude);
-      //   console.log('Longitude: ' + longitude);
-
-      return { longitude, latitude, city: city.name };
+      return { longitude, latitude, locData };
     } else {
-      throw new Error('Geolocation is not supported in your browser');
+      throw new Error("Geolocation is not supported in your browser");
     }
   } catch (error) {
-    console.error('Error getting location: ' + error.message);
+    console.error("Error getting location: " + error.message);
   }
 }

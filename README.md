@@ -1,8 +1,8 @@
 # Foodify
 
-A food delivery application made using React and Swiggy's API. Enhanced UI with visually appealing shimmer effects. Featuring restaurant lists, search, accordion menus, and cart functionality
+A food delivery application made using React and Swiggy's API. Enhanced UI with visually appealing shimmer effects. Featuring restaurant lists according to user's location, search, accordion menus, and cart functionality.
 
-This project was built as a part of the course Namaste React by Akshay Saini.
+This project was built as a part of the course [Namaste React] (https://namastedev.com/learn/namaste-react){:target="_blank"} by [Akshay Saini](https://www.linkedin.com/in/akshaymarch7/){:target="_blank"}.
 
 ## Tech Stack
 
