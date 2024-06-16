@@ -25,7 +25,7 @@ const Body = () => {
 
       setRestroData(jsonData);
 
-      // console.log(jsonData);
+      console.log(jsonData);
 
       const listOfRestaurantArray =
         (jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
@@ -66,9 +66,9 @@ const Body = () => {
     }
     return (
       <>
-        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
-          <div className="w-[200px] relative flex border-r-2 pr-3">
-            <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
+        <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-7/12 mx-auto my-5 flex items-center">
+          <div className="w-[250px] relative flex border-r-2 pr-3 items-center">
+            <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400 " />
             <p className="hidden md:block text-gray-600 mx-auto">
               <line className="text-sm text-gray-600 w-10 shine"></line>
             </p>
@@ -87,7 +87,10 @@ const Body = () => {
           </button>
         </div>
         <div>
-          <line className="mx-[100px] text-gray-600 w-24 shine"></line>
+          <h2 className="mx-[100px] font-bold text-[24px]">
+            Order food online in
+            <line className="mx-[20px] text-gray-600 w-24 shine"></line>
+          </h2>
         </div>
         <div className="mx-[70px]">
           <div className="mx-auto flex flex-wrap flex-row justify-around">
@@ -100,10 +103,10 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-6/12 mx-auto my-5 flex items-center">
-        <div className="w-[200px] relative flex border-r-2 pr-3">
+      <div className="p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 w-7/12 mx-auto my-5 flex items-center">
+        <div className="w-[250px] relative flex border-r-2 pr-3">
           <FaLocationDot className="w-[20px] h-[20px] mr-[5px] text-orange-400" />
-          <p className=" capitalize hidden md:block text-gray-600 mx-auto">
+          <p className=" capitalize font-semibold hidden md:block text-gray-600 mx-auto break-words">
             {restroData.data.cards[11].card.card.citySlug}
           </p>
         </div>

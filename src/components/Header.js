@@ -5,10 +5,16 @@ import { LuShoppingCart } from "react-icons/lu";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { IoInformationCircle } from "react-icons/io5";
 import useLoginInfo from "../Hooks/useLoginInfo";
+import Login from "./Login";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const cartItems = useSelector((store) => store.cart.items); //subscribing to the store using selector
 
@@ -52,11 +58,12 @@ const Header = () => {
               <Link to="/Login" className="relative flex items-center gap-2">
                 <RiAccountCircleFill />
                 <p className="hidden md:block text-gray-600 hover:text-black ">
-                  Login
+                  {btnName}
                 </p>
               </Link>
             </b>
           </li>
+          
         </ul>
       </div>
     </div>
