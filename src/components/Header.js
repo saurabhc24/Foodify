@@ -48,12 +48,7 @@ const Header = () => {
               }
             </Link>
           </li>
-          <li
-            className="m-4 p-4 float-right hover:text-black flex items-center relative"
-            onClick={() => {
-              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
-            }}
-          >
+          <li className="m-4 p-4 float-right hover:text-black flex items-center relative">
             <b>
               <Link to="/Login" className="relative flex items-center gap-2">
                 <RiAccountCircleFill />
@@ -63,7 +58,6 @@ const Header = () => {
               </Link>
             </b>
           </li>
-          
         </ul>
       </div>
     </div>
